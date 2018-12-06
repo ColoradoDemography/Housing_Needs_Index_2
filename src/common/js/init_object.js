@@ -7,6 +7,7 @@ module.exports = function() {
         var fips_array = [1, 3, 5, 7, 9, 11, 13, 14, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 123, 125];
 
         this.data = data;
+        console.log(data);
 
         var first_year = function() {
             var low_year_value = 5000;
@@ -38,10 +39,15 @@ module.exports = function() {
 
         /* POPULATION */
 
-        this.retrieveCountyPop = function(fips, year) {
+       //loop this to go through ages and counties, i for counties, j for ages
+       
+        this.retrieveCountyPop = function(fips, year) { //, age) {
             for (let i = 0; i < data.length; i++) {
-                if (data[i].countyfips === fips && data[i].year === year) {
-                    return data[i].estimate;
+                var agepop = 0;
+                if (data[i].countyfips === fips && data[i].year === year) { // && data[i].age === age) {
+                    agepop = agepop + data[i].totalpopulation;
+                    
+                    return agepop;
                 }
             }
             return 0;
@@ -166,406 +172,406 @@ module.exports = function() {
             return min_value;
         }
 
-        /* BIRTHS */
+    //     /* BIRTHS */
 
-        this.retrieveCountyBirths = function(fips, year) {
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].countyfips === fips && data[i].year === year) {
-                    return Number(data[i].births);
-                }
-            }
-            return 0;
-        }
-
-
-        this.retrieveCountyBirthRate = function(fips, year) {
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].countyfips === fips && data[i].year === year) {
-                    return (Number(data[i].births) / Number(data[i].estimate)) * 1000;
-                }
-            }
-            return 0;
-        }
-
-        this.retrieveTtlBirths = function(fips) {
-            var running_total_births = 0;
-            for (let j = (first_year + 1); j < (last_year + 1); j++) {
-                running_total_births += this.retrieveCountyBirths(fips, j);
-            }
-            return running_total_births;
-        }
-
-        this.getMaxTtlBirths = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveTtlBirths(fips_array[i]);
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
-
-        this.getMinTtlBirths = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveTtlBirths(fips_array[i]);
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }
+    //     this.retrieveCountyBirths = function(fips, year) {
+    //         for (let i = 0; i < data.length; i++) {
+    //             if (data[i].countyfips === fips && data[i].year === year) {
+    //                 return Number(data[i].births);
+    //             }
+    //         }
+    //         return 0;
+    //     }
 
 
-        this.getMedianTotalBirths = function() {
-            var values = [];
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveTtlBirths(fips_array[i]));
-                values.push(current_county);
-            }
+    //     this.retrieveCountyBirthRate = function(fips, year) {
+    //         for (let i = 0; i < data.length; i++) {
+    //             if (data[i].countyfips === fips && data[i].year === year) {
+    //                 return (Number(data[i].births) / Number(data[i].estimate)) * 1000;
+    //             }
+    //         }
+    //         return 0;
+    //     }
 
-            values.sort(function(a, b) {
-                return a - b;
-            });
+    //     this.retrieveTtlBirths = function(fips) {
+    //         var running_total_births = 0;
+    //         for (let j = (first_year + 1); j < (last_year + 1); j++) {
+    //             running_total_births += this.retrieveCountyBirths(fips, j);
+    //         }
+    //         return running_total_births;
+    //     }
 
-            var half = Math.floor(values.length / 2);
-            if (values.length % 2)
-                return values[half];
-            else
-                return (values[half - 1] + values[half]) / 2.0;
-        }
+    //     this.getMaxTtlBirths = function() {
+    //         var max_value = -Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = this.retrieveTtlBirths(fips_array[i]);
+    //             if (current_county > max_value) {
+    //                 max_value = current_county;
+    //             }
+    //         }
+    //         return max_value;
+    //     }
 
-        this.retrieveBirthRate = function(fips) {
-            var running_total = 0;
-            for (let j = (first_year + 1); j < (last_year + 1); j++) {
-                running_total += this.retrieveCountyBirthRate(fips, j);
-            }
-            return (running_total / number_of_years).toFixed(1);
-        }
-
-        this.getMaxBirthRate = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveBirthRate(fips_array[i]));
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
-
-        this.getMinBirthRate = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveBirthRate(fips_array[i]));
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }
-
-        this.getMedianBirthRate = function() {
-            var values = [];
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveBirthRate(fips_array[i]));
-                values.push(current_county);
-            }
-
-            values.sort(function(a, b) {
-                return a - b;
-            });
-
-            var half = Math.floor(values.length / 2);
-            if (values.length % 2)
-                return values[half];
-            else
-                return (values[half - 1] + values[half]) / 2.0;
-        }
+    //     this.getMinTtlBirths = function() {
+    //         var min_value = Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = this.retrieveTtlBirths(fips_array[i]);
+    //             if (current_county < min_value) {
+    //                 min_value = current_county;
+    //             }
+    //         }
+    //         return min_value;
+    //     }
 
 
-        /* DEATHS */
+    //     this.getMedianTotalBirths = function() {
+    //         var values = [];
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveTtlBirths(fips_array[i]));
+    //             values.push(current_county);
+    //         }
+
+    //         values.sort(function(a, b) {
+    //             return a - b;
+    //         });
+
+    //         var half = Math.floor(values.length / 2);
+    //         if (values.length % 2)
+    //             return values[half];
+    //         else
+    //             return (values[half - 1] + values[half]) / 2.0;
+    //     }
+
+    //     this.retrieveBirthRate = function(fips) {
+    //         var running_total = 0;
+    //         for (let j = (first_year + 1); j < (last_year + 1); j++) {
+    //             running_total += this.retrieveCountyBirthRate(fips, j);
+    //         }
+    //         return (running_total / number_of_years).toFixed(1);
+    //     }
+
+    //     this.getMaxBirthRate = function() {
+    //         var max_value = -Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveBirthRate(fips_array[i]));
+    //             if (current_county > max_value) {
+    //                 max_value = current_county;
+    //             }
+    //         }
+    //         return max_value;
+    //     }
+
+    //     this.getMinBirthRate = function() {
+    //         var min_value = Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveBirthRate(fips_array[i]));
+    //             if (current_county < min_value) {
+    //                 min_value = current_county;
+    //             }
+    //         }
+    //         return min_value;
+    //     }
+
+    //     this.getMedianBirthRate = function() {
+    //         var values = [];
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveBirthRate(fips_array[i]));
+    //             values.push(current_county);
+    //         }
+
+    //         values.sort(function(a, b) {
+    //             return a - b;
+    //         });
+
+    //         var half = Math.floor(values.length / 2);
+    //         if (values.length % 2)
+    //             return values[half];
+    //         else
+    //             return (values[half - 1] + values[half]) / 2.0;
+    //     }
 
 
-        this.retrieveCountyDeaths = function(fips, year) {
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].countyfips === fips && data[i].year === year) {
-                    return Number(data[i].deaths);
-                }
-            }
-            return 0;
-        }
+    //     /* DEATHS */
 
 
-        this.retrieveCountyDeathRate = function(fips, year) {
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].countyfips === fips && data[i].year === year) {
-                    return (Number(data[i].deaths) / Number(data[i].estimate)) * 1000;
-                }
-            }
-            return 0;
-        }
-
-        this.retrieveTtlDeaths = function(fips) {
-            var running_total_deaths = 0;
-            for (let j = (first_year + 1); j < (last_year + 1); j++) {
-                running_total_deaths += this.retrieveCountyDeaths(fips, j);
-            }
-            return running_total_deaths;
-        }
+    //     this.retrieveCountyDeaths = function(fips, year) {
+    //         for (let i = 0; i < data.length; i++) {
+    //             if (data[i].countyfips === fips && data[i].year === year) {
+    //                 return Number(data[i].deaths);
+    //             }
+    //         }
+    //         return 0;
+    //     }
 
 
-        this.getMaxTtlDeaths = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveTtlDeaths(fips_array[i]);
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
+    //     this.retrieveCountyDeathRate = function(fips, year) {
+    //         for (let i = 0; i < data.length; i++) {
+    //             if (data[i].countyfips === fips && data[i].year === year) {
+    //                 return (Number(data[i].deaths) / Number(data[i].estimate)) * 1000;
+    //             }
+    //         }
+    //         return 0;
+    //     }
 
-        this.getMinTtlDeaths = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveTtlDeaths(fips_array[i]);
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }
-
-        this.getMedianTotalDeaths = function() {
-            var values = [];
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveTtlDeaths(fips_array[i]));
-                values.push(current_county);
-            }
-
-            values.sort(function(a, b) {
-                return a - b;
-            });
-
-            var half = Math.floor(values.length / 2);
-            if (values.length % 2)
-                return values[half];
-            else
-                return (values[half - 1] + values[half]) / 2.0;
-        }
-
-        this.retrieveDeathRate = function(fips) {
-            var running_total = 0;
-            for (let j = (first_year + 1); j < (last_year + 1); j++) {
-                running_total += this.retrieveCountyDeathRate(fips, j);
-            }
-            return (running_total / number_of_years).toFixed(1);
-        }
-
-        this.getMaxDeathRate = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveDeathRate(fips_array[i]));
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
-
-        this.getMinDeathRate = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveDeathRate(fips_array[i]));
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }
-
-        this.getMedianDeathRate = function() {
-            var values = [];
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveDeathRate(fips_array[i]));
-                values.push(current_county);
-            }
-
-            values.sort(function(a, b) {
-                return a - b;
-            });
-
-            var half = Math.floor(values.length / 2);
-            if (values.length % 2)
-                return values[half];
-            else
-                return (values[half - 1] + values[half]) / 2.0;
-        }
-
-        /* NATURAL INCREASE  */
-        this.retrieveCountyNatInc = function(fips, year) {
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].countyfips === fips && data[i].year === year) {
-                    return (Number(data[i].births) - Number(data[i].deaths));
-                }
-            }
-            return 0;
-        }
+    //     this.retrieveTtlDeaths = function(fips) {
+    //         var running_total_deaths = 0;
+    //         for (let j = (first_year + 1); j < (last_year + 1); j++) {
+    //             running_total_deaths += this.retrieveCountyDeaths(fips, j);
+    //         }
+    //         return running_total_deaths;
+    //     }
 
 
-        this.retrieveCountyNatIncRate = function(fips, year) {
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].countyfips === fips && data[i].year === year) {
-                    return ((Number(data[i].births) - Number(data[i].deaths)) / Number(data[i].estimate));
-                }
-            }
-            return 0;
-        }
+    //     this.getMaxTtlDeaths = function() {
+    //         var max_value = -Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = this.retrieveTtlDeaths(fips_array[i]);
+    //             if (current_county > max_value) {
+    //                 max_value = current_county;
+    //             }
+    //         }
+    //         return max_value;
+    //     }
 
-        this.retrieveNatIncrease = function(fips) {
-            return (this.retrieveTtlBirths(fips) - this.retrieveTtlDeaths(fips));
-        }
+    //     this.getMinTtlDeaths = function() {
+    //         var min_value = Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = this.retrieveTtlDeaths(fips_array[i]);
+    //             if (current_county < min_value) {
+    //                 min_value = current_county;
+    //             }
+    //         }
+    //         return min_value;
+    //     }
 
-        this.getMaxNatIncrease = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveNatIncrease(fips_array[i]);
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
+    //     this.getMedianTotalDeaths = function() {
+    //         var values = [];
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveTtlDeaths(fips_array[i]));
+    //             values.push(current_county);
+    //         }
 
-        this.getMinNatIncrease = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveNatIncrease(fips_array[i]);
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }
+    //         values.sort(function(a, b) {
+    //             return a - b;
+    //         });
 
+    //         var half = Math.floor(values.length / 2);
+    //         if (values.length % 2)
+    //             return values[half];
+    //         else
+    //             return (values[half - 1] + values[half]) / 2.0;
+    //     }
 
-        this.retrieveRateNaturalIncrease = function(fips) {
-            var running_total = 0;
-            for (let j = (first_year + 1); j < (last_year + 1); j++) {
-                running_total += this.retrieveCountyNatIncRate(fips, j);
-            }
-            return ((running_total / number_of_years) * 100).toFixed(2);
-        }
+    //     this.retrieveDeathRate = function(fips) {
+    //         var running_total = 0;
+    //         for (let j = (first_year + 1); j < (last_year + 1); j++) {
+    //             running_total += this.retrieveCountyDeathRate(fips, j);
+    //         }
+    //         return (running_total / number_of_years).toFixed(1);
+    //     }
 
-        this.getMaxRateNaturalIncrease = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveRateNaturalIncrease(fips_array[i]));
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
+    //     this.getMaxDeathRate = function() {
+    //         var max_value = -Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveDeathRate(fips_array[i]));
+    //             if (current_county > max_value) {
+    //                 max_value = current_county;
+    //             }
+    //         }
+    //         return max_value;
+    //     }
 
-        this.getMinRateNaturalIncrease = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveRateNaturalIncrease(fips_array[i]));
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }
+    //     this.getMinDeathRate = function() {
+    //         var min_value = Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveDeathRate(fips_array[i]));
+    //             if (current_county < min_value) {
+    //                 min_value = current_county;
+    //             }
+    //         }
+    //         return min_value;
+    //     }
 
+    //     this.getMedianDeathRate = function() {
+    //         var values = [];
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveDeathRate(fips_array[i]));
+    //             values.push(current_county);
+    //         }
 
-        /* MIGRATION */
+    //         values.sort(function(a, b) {
+    //             return a - b;
+    //         });
 
-        this.retrieveCountyMigration = function(fips, year) {
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].countyfips === fips && data[i].year === year) {
-                    return Number(data[i].netmig);
-                }
-            }
-            return 0;
-        }
+    //         var half = Math.floor(values.length / 2);
+    //         if (values.length % 2)
+    //             return values[half];
+    //         else
+    //             return (values[half - 1] + values[half]) / 2.0;
+    //     }
 
-        this.retrieveCountyMigrationRate = function(fips, year) {
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].countyfips === fips && data[i].year === year) {
-                    return (Number(data[i].netmig) / Number(data[i].estimate)) * 1000;
-                }
-            }
-            return 0;
-        }
-
-        this.retrieveTtlMigration = function(fips) {
-            var running_total_migration = 0;
-            for (let j = (first_year + 1); j < (last_year + 1); j++) {
-                running_total_migration += this.retrieveCountyMigration(fips, j);
-            }
-            return running_total_migration;
-        }
-
-        this.getMaxTtlMigration = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveTtlMigration(fips_array[i]);
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
-
-        this.getMinTtlMigration = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveTtlMigration(fips_array[i]);
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }
+    //     /* NATURAL INCREASE  */
+    //     this.retrieveCountyNatInc = function(fips, year) {
+    //         for (let i = 0; i < data.length; i++) {
+    //             if (data[i].countyfips === fips && data[i].year === year) {
+    //                 return (Number(data[i].births) - Number(data[i].deaths));
+    //             }
+    //         }
+    //         return 0;
+    //     }
 
 
-        this.retrieveMigrationRate = function(fips) {
-            var running_total = 0;
-            for (let j = (first_year + 1); j < (last_year + 1); j++) {
-                running_total += this.retrieveCountyMigrationRate(fips, j);
-            }
-            return (running_total / number_of_years).toFixed(2);
-        }
+    //     this.retrieveCountyNatIncRate = function(fips, year) {
+    //         for (let i = 0; i < data.length; i++) {
+    //             if (data[i].countyfips === fips && data[i].year === year) {
+    //                 return ((Number(data[i].births) - Number(data[i].deaths)) / Number(data[i].estimate));
+    //             }
+    //         }
+    //         return 0;
+    //     }
 
-        this.getMaxMigrationRate = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveMigrationRate(fips_array[i]));
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
+    //     this.retrieveNatIncrease = function(fips) {
+    //         return (this.retrieveTtlBirths(fips) - this.retrieveTtlDeaths(fips));
+    //     }
 
-        this.getMinMigrationRate = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveMigrationRate(fips_array[i]));
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }
+    //     this.getMaxNatIncrease = function() {
+    //         var max_value = -Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = this.retrieveNatIncrease(fips_array[i]);
+    //             if (current_county > max_value) {
+    //                 max_value = current_county;
+    //             }
+    //         }
+    //         return max_value;
+    //     }
+
+    //     this.getMinNatIncrease = function() {
+    //         var min_value = Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = this.retrieveNatIncrease(fips_array[i]);
+    //             if (current_county < min_value) {
+    //                 min_value = current_county;
+    //             }
+    //         }
+    //         return min_value;
+    //     }
+
+
+    //     this.retrieveRateNaturalIncrease = function(fips) {
+    //         var running_total = 0;
+    //         for (let j = (first_year + 1); j < (last_year + 1); j++) {
+    //             running_total += this.retrieveCountyNatIncRate(fips, j);
+    //         }
+    //         return ((running_total / number_of_years) * 100).toFixed(2);
+    //     }
+
+    //     this.getMaxRateNaturalIncrease = function() {
+    //         var max_value = -Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveRateNaturalIncrease(fips_array[i]));
+    //             if (current_county > max_value) {
+    //                 max_value = current_county;
+    //             }
+    //         }
+    //         return max_value;
+    //     }
+
+    //     this.getMinRateNaturalIncrease = function() {
+    //         var min_value = Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveRateNaturalIncrease(fips_array[i]));
+    //             if (current_county < min_value) {
+    //                 min_value = current_county;
+    //             }
+    //         }
+    //         return min_value;
+    //     }
+
+
+    //     /* MIGRATION */
+
+    //     this.retrieveCountyMigration = function(fips, year) {
+    //         for (let i = 0; i < data.length; i++) {
+    //             if (data[i].countyfips === fips && data[i].year === year) {
+    //                 return Number(data[i].netmig);
+    //             }
+    //         }
+    //         return 0;
+    //     }
+
+    //     this.retrieveCountyMigrationRate = function(fips, year) {
+    //         for (let i = 0; i < data.length; i++) {
+    //             if (data[i].countyfips === fips && data[i].year === year) {
+    //                 return (Number(data[i].netmig) / Number(data[i].estimate)) * 1000;
+    //             }
+    //         }
+    //         return 0;
+    //     }
+
+    //     this.retrieveTtlMigration = function(fips) {
+    //         var running_total_migration = 0;
+    //         for (let j = (first_year + 1); j < (last_year + 1); j++) {
+    //             running_total_migration += this.retrieveCountyMigration(fips, j);
+    //         }
+    //         return running_total_migration;
+    //     }
+
+    //     this.getMaxTtlMigration = function() {
+    //         var max_value = -Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = this.retrieveTtlMigration(fips_array[i]);
+    //             if (current_county > max_value) {
+    //                 max_value = current_county;
+    //             }
+    //         }
+    //         return max_value;
+    //     }
+
+    //     this.getMinTtlMigration = function() {
+    //         var min_value = Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = this.retrieveTtlMigration(fips_array[i]);
+    //             if (current_county < min_value) {
+    //                 min_value = current_county;
+    //             }
+    //         }
+    //         return min_value;
+    //     }
+
+
+    //     this.retrieveMigrationRate = function(fips) {
+    //         var running_total = 0;
+    //         for (let j = (first_year + 1); j < (last_year + 1); j++) {
+    //             running_total += this.retrieveCountyMigrationRate(fips, j);
+    //         }
+    //         return (running_total / number_of_years).toFixed(2);
+    //     }
+
+    //     this.getMaxMigrationRate = function() {
+    //         var max_value = -Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveMigrationRate(fips_array[i]));
+    //             if (current_county > max_value) {
+    //                 max_value = current_county;
+    //             }
+    //         }
+    //         return max_value;
+    //     }
+
+    //     this.getMinMigrationRate = function() {
+    //         var min_value = Infinity;
+    //         for (let i = 0; i < fips_array.length; i++) {
+    //             var current_county = parseFloat(this.retrieveMigrationRate(fips_array[i]));
+    //             if (current_county < min_value) {
+    //                 min_value = current_county;
+    //             }
+    //         }
+    //         return min_value;
+    //     }
 
 
 
-    }
+     }
 
 
 

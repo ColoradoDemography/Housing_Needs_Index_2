@@ -9,13 +9,13 @@ module.exports = function(geolayer, main_data) {
     // string_output[0] = comma delimited years  
     // string_output[1] = selected stat
     var string_output = getUserInputs();
+    //console.log(string_output);
 
-
-    filterData(main_data, string_output[0], function(data) {
+    filterData(main_data, string_output[0], string_output[1], function(data) {
         var cMap = new CMap(data);
 
         //symbolize layer
-        symbology(geolayer, cMap, string_output[1]);
+        symbology(geolayer, cMap, string_output[2]);
     });
 
 }
