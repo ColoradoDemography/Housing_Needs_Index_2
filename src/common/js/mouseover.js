@@ -11,11 +11,11 @@ module.exports = function(e, worker_data) {
     var string_output = getUserInputs();
 
 
-    filterData(worker_data, string_output[0], function(data) {
+    filterData(worker_data, string_output[0], string_output[1], function(data) {
 
         var cMap = new CMap(data);
         var fips = parseInt(e.target.feature.properties.COUNTYFP, 10);
-        var stat = string_output[1];
+        var stat = string_output[2];
 
         var result_value;
 
