@@ -6,12 +6,13 @@ module.exports = function() {
     var age_string = "";
 
     var stat_element = document.getElementById("stat");
-
+    
     //chicken and the egg.  if this has been called before custom control was created
     if (stat_element === null) {
         first_year = "1990";
         last_year = "1991";
         stat_val = "2";
+        age_string = "0 to 4";
     } else {
 
         var from_element = document.getElementById("selfrom");
@@ -47,9 +48,9 @@ module.exports = function() {
     }
     
     if (age_string === "") {
-        age_string = "1";
+        age_string = "0 to 4";
     }
-
+    //console.log(age_string, yearset, stat_val);
     return [age_string, yearset, stat_val]
 
 }

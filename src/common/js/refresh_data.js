@@ -9,6 +9,7 @@ module.exports = function(geolayer, main_data) {
     // string_output[0] = comma delimited years  
     // string_output[1] = selected stat
     var string_output = getUserInputs();
+    //console.log(main_data);
     //console.log(string_output);
 
     filterData(main_data, string_output[0], string_output[1], function(data) {
