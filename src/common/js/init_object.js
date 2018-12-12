@@ -39,20 +39,14 @@ module.exports = function() {
         /* POPULATION */
 
        //loop this to go through ages and counties, i for counties, j for ages
-        this.retrieveCountyPop = function(fips, year) { //, age) {
-
+        this.retrieveCountyPop = function(fips, year) {
+            var agepop = 0;
             for (let i = 0; i < data.length; i++) {
-                var agepop = 0;
-                if (data[i].countyfips === fips && data[i].year === year) { // && data[i].age === age) {
-                    //console.log(agepop);
+                if (data[i].countyfips === fips && data[i].year === year) {
                     agepop = agepop + parseInt(data[i].totalpopulation);
-                    //console.log(agepop);
-                    //console.log(fips);
-                   // console.log(year);
-                    return agepop;
                 }
             }
-            return 0;
+            return agepop;
         }
 
         this.retrieveTtlPopChg = function(fips) {
