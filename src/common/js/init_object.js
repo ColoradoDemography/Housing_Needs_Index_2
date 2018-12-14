@@ -38,7 +38,6 @@ module.exports = function() {
 
         /* POPULATION */
 
-       //loop this to go through ages and counties, i for counties, j for ages
         this.retrieveCountyPop = function(fips, year) {
             var agepop = 0;
             for (let i = 0; i < data.length; i++) {
@@ -51,6 +50,10 @@ module.exports = function() {
 
         this.retrieveTtlPopChg = function(fips) {
             return (this.retrieveCountyPop(fips, last_year) - this.retrieveCountyPop(fips, first_year));
+        }
+        
+        this.retrieveTtlPop = function(fips) {
+            return this.retrieveCountyPop(fips, first_year);
         }
 
         this.getMaxTtlChange = function() {
@@ -68,6 +71,28 @@ module.exports = function() {
             var min_value = Infinity;
             for (let i = 0; i < fips_array.length; i++) {
                 var current_county = (this.retrieveCountyPop(fips_array[i], last_year) - this.retrieveCountyPop(fips_array[i], first_year));
+                if (current_county < min_value) {
+                    min_value = current_county;
+                }
+            }
+            return min_value;
+        }
+        
+         this.getMaxTtl = function() {
+            var max_value = -Infinity;
+            for (let i = 0; i < fips_array.length; i++) {
+                var current_county = this.retrieveCountyPop(fips_array[i], first_year);
+                if (current_county > max_value) {
+                    max_value = current_county;
+                }
+            }
+            return max_value;
+        }
+
+        this.getMinTtl = function() {
+            var min_value = Infinity;
+            for (let i = 0; i < fips_array.length; i++) {
+                var current_county = this.retrieveCountyPop(fips_array[i], first_year);
                 if (current_county < min_value) {
                     min_value = current_county;
                 }
@@ -101,6 +126,24 @@ module.exports = function() {
                 }
             }
             return min_value;
+        }
+
+        this.getMedianTotalPop = function() {
+            var values = [];
+            for (let i = 0; i < fips_array.length; i++) {
+                var current_county = parseFloat(this.retrieveTtlPop(fips_array[i]));
+                values.push(current_county);
+            }
+
+            values.sort(function(a, b) {
+                return a - b;
+            });
+
+            var half = Math.floor(values.length / 2);
+            if (values.length % 2)
+                return values[half];
+            else
+                return (values[half - 1] + values[half]) / 2.0;
         }
 
         /* PERCENT POPULATION */
@@ -168,6 +211,8 @@ module.exports = function() {
             return min_value;
         }
 
+
+    
     //     /* BIRTHS */
 
     //     this.retrieveCountyBirths = function(fips, year) {

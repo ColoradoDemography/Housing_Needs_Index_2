@@ -23,8 +23,8 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     command.onAdd = function() {
         var div = L.DomUtil.create('div', 'command bord');
-        div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Total Age Group Change</option><option value='1'>Percent Age Group Change</option></select><br />" + //<option value='3'>Age Group Population</option></select><br />" +
-            "<br />From:&nbsp;&nbsp;<select id='selfrom'>" + queriedYears + "</select>&nbsp;&nbsp;&nbsp;To:&nbsp;&nbsp;<select id='selto'>" + queriedYears + "</select><br />" +
+        div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Total Age Group Change</option><option value='1'>Percent Age Group Change</option><option value='3'>Age Group Population</option></select><br />" +
+            "<br /><span>From:</span>&nbsp;&nbsp;<select id='selfrom'>" + queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + "</select><br />" +
             "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='0 to 4' selected>0 to 4</option>" + 
                 "<option value='5 to 9'>5 to 9</option>" +
                 "<option value='10 to 14'>10 to 14</option>" +
@@ -44,7 +44,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='80 to 84'>80 to 84</option>" +
                 "<option value='85 to 89'>85 to 89</option>" +
                 "<option value='90 to 94'>90 to 94</option>" +
-                "<option value='95 to 100'>95 and older</option>" +
+                "<option value='95 and over'>95 and over</option>" +
             "</select>";
             //"<br /><button name='display' id='display' align='center'>Show Data</button>";
             
@@ -56,7 +56,20 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     document.getElementById("stat").addEventListener("change", function() {
         refreshdata(layer, main_data);
-        //console.log(main_data);
+        //hide second year option if viewing single year
+        var stat_element = document.getElementById("stat");
+        if (stat_element.options[stat_element.selectedIndex].value === '3') {
+            $("span:first").text("Year:");
+            $("to:first").text("");
+            $("#selto").hide();
+            //selto_element.style.display = "none";
+        } else {
+            $("span:first").text("From:");
+            $("to:first").text("To:");
+            $("#selto").show();
+            //selto_element.style.display = "block";
+        }
+        // //console.log(main_data);
     }, false);
 
     document.getElementById("selfrom").addEventListener("change", function() {

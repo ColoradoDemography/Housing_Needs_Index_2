@@ -26,13 +26,22 @@ module.exports = function(geolayer, cMap, num) {
         }
     }
     if (num === "3") {
-        max = cMap.getMaxAvgPctPopChg();
-        min = cMap.getMinAvgPctPopChg();
-        breaks = [min * 0.5, min * 0.35, min * 0.2, min * 0.1, 0, max * 0.1, max * 0.2, max * 0.35, max * 0.5, max * 0.75];
-        if (min > 0) {
-            min = -max;
-        }
+        max = cMap.getMaxTtl();
+        min = cMap.getMinTtl();
+        median = cMap.getMedianTotalPop();
+        spreadl = median - min;
+        spreadh = max - median;
+        breaks = [(min + spreadl * (2 / 5)), (min + spreadl * (3 / 5)), (min + spreadl * (4 / 5)), (min + spreadl * (9 / 10)), median, (median + spreadh * (1 / 12)), (median + spreadh * (1 / 6)), (median + spreadh * (2 / 6)), (median + spreadh * (3 / 6)), (median + spreadh * (4 / 6))];
     }
+    
+    // if (num === "3") {
+    //     max = cMap.getMaxAvgPctPopChg();
+    //     min = cMap.getMinAvgPctPopChg();
+    //     breaks = [min * 0.5, min * 0.35, min * 0.2, min * 0.1, 0, max * 0.1, max * 0.2, max * 0.35, max * 0.5, max * 0.75];
+    //     if (min > 0) {
+    //         min = -max;
+    //     }
+    // }
     if (num === "4") {
         max = cMap.getMaxAvgPopChg();
         min = cMap.getMinAvgPopChg();
@@ -115,8 +124,11 @@ module.exports = function(geolayer, cMap, num) {
             value = cMap.retrieveTtlPopChg(fips);
         }
         if (num === "3") {
-            value = cMap.retrieveAvgPctPopChg(fips);
+            value = cMap.retrieveTtlPop(fips);
         }
+        // if (num === "3") {
+        //     value = cMap.retrieveAvgPctPopChg(fips);
+        // }
         if (num === "4") {
             value = cMap.retrieveAvgPopChg(fips);
         }

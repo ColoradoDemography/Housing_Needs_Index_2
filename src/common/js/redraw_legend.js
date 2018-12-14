@@ -23,7 +23,7 @@ module.exports = function(min, max, num, breaks) {
 
     var add_pct = "";
 
-    if (num === "1" || num === "3" || num === "7") {
+    if (num === "1" || num === "7") {
         add_pct = "%";
     }
 
@@ -105,16 +105,16 @@ module.exports = function(min, max, num, breaks) {
     }
 
     if (num === "2") {
-        htmlstring += "<tr><td colspan='4'>Year to year change<br/>in total population</td></tr></table>";
+        htmlstring += "<tr><td colspan='4'>Year to year change<br/>in selected age groups</td></tr></table>";
     }
     if (num === "1") {
-        htmlstring += "<tr><td colspan='4'>Percent change in population<br/>from year to year</td></tr></table>";
+        htmlstring += "<tr><td colspan='4'>Percent change<br/>in selected age groups<br/>from year to year</td></tr></table>";
     }
     if (num === "4") {
         htmlstring += "<tr><td colspan='4'>Average change in population<br/>for each year selected</td></tr></table>";
     }
     if (num === "3") {
-        htmlstring += "<tr><td colspan='4'>Average percent change<br/>in population<br/>for each year selected</td></tr></table>";
+        htmlstring += "<tr><td colspan='4'>Total population<br/>of selected age groups<br/>for the year selected</td></tr></table>";
     }
     if (num === "5") {
         htmlstring += "<tr><td colspan='4'>Births per 1,000 people</td></tr></table>";

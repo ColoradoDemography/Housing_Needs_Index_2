@@ -7,7 +7,8 @@ module.exports = function(map) {
     legend.onAdd = function() {
         var div = L.DomUtil.create('div', 'title bord');
         div.id = 'legend-control';
-        div.innerHTML = 'placeholder';
+        div.innerHTML = 'Loading Data, Please Wait';
+        div.style.color = '#d00';
         return div;
     };
 

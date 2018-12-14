@@ -35,9 +35,9 @@ module.exports = function(e, worker_data) {
             });
         }
         if (stat === "3") {
-            result_value = parseFloat(cMap.retrieveAvgPctPopChg(fips)).toLocaleString(undefined, {
+            result_value = parseFloat(cMap.retrieveTtlPop(fips)).toLocaleString(undefined, {
                 maximumFractionDigits: 1
-            }) + " %";
+            });
         }
         if (stat === "9") {
             result_value = cMap.retrieveTtlBirths(fips).toLocaleString(undefined, {
