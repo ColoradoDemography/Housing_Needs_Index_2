@@ -20,7 +20,7 @@ module.exports = function(map) {
                 var downloadhref = encodeURIComponent(window.location.origin + window.location.pathname + "index.html?print=yes" + "&stat=" + stat_select.value + "&from=" + selfrom.value + "&to=" + selto.value);
                 console.log(downloadhref);
                 var link = document.createElement('a');
-                link.href = 'https://gis.dola.colorado.gov/phantom/screenshot?website=' + downloadhref + '&filename=components&timer=6000&width=900';
+                link.href = 'https://gis.dola.colorado.gov/phantom/screenshot?website=' + downloadhref + '&filename=agemap&timer=10000&width=900';
                 document.body.appendChild(link);
                 link.click();
                 setTimeout(function() {
