@@ -30,7 +30,7 @@ module.exports = function(map) {
             title: 'Save PNG Image',
             icon: 'fa-floppy-o'
         }]
-    }).addTo(map);
+    });//.addTo(map);
 
 
 }
