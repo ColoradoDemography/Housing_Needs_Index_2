@@ -25,7 +25,7 @@ module.exports = function(map) {
                 link.click();
                 setTimeout(function() {
                     map.spin(false);
-                }, 9000); //overshoot 6 sec timer
+                }, 15000); //overshoot 6 sec timer
             },
             title: 'Save PNG Image',
             icon: 'fa-floppy-o'
