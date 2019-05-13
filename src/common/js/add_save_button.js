@@ -20,17 +20,17 @@ module.exports = function(map) {
                 var downloadhref = encodeURIComponent(window.location.origin + window.location.pathname + "index.html?print=yes" + "&stat=" + stat_select.value + "&from=" + selfrom.value + "&to=" + selto.value);
                 console.log(downloadhref);
                 var link = document.createElement('a');
-                link.href = 'https://gis.dola.colorado.gov/phantom/screenshot?website=' + downloadhref + '&filename=agemap&timer=10000&width=900';
+                link.href = 'https://gis.dola.colorado.gov/phantom/screenshot?website=' + downloadhref + '&filename=agemap&timer=15000&width=900';
                 document.body.appendChild(link);
                 link.click();
                 setTimeout(function() {
                     map.spin(false);
-                }, 15000); //overshoot 6 sec timer
+                }, 18000); //overshoot 6 sec timer
             },
             title: 'Save PNG Image',
             icon: 'fa-floppy-o'
         }]
-    });//.addTo(map);
+    }).addTo(map);
 
 
 }
