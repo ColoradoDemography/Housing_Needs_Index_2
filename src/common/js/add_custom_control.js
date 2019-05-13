@@ -123,7 +123,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
     //intialize!
     var querystring = getJsonFromUrl();
     
-    if ('print' in querystring && 'stat' in querystring && 'from' in querystring && 'to' in querystring) {
+    if ('print' in querystring && 'stat' in querystring && 'from' in querystring && 'to' in querystring && 'age' in querystring) {
     
             map.panTo(L.latLng(39.35, -104.3));
     
@@ -133,6 +133,8 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             f.selected = true;
             let g: any = document.querySelector('#selto [value="' + querystring.to + '"]');
             g.selected = true;
+            let h: any = document.querySelector('#agegroups [value="' + querystring.to + '"]');
+            h.selected = true;
             document.getElementsByClassName('command')[0].style.display = 'none';
             document.getElementsByClassName('leaflet-top leaflet-right')[0].style.display = 'none';
     
@@ -142,7 +144,8 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             let title_h2 = document.querySelector('.title h2');
             let selfrom: any = document.getElementById("selfrom");
             let selto: any = document.getElementById("selto");
-            title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text;
+            let ages: any = document.getElementByID("agegroups");
+            title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text + ": Ages " + ages.value;
     
             refreshdata(layer, main_data);
         } else {

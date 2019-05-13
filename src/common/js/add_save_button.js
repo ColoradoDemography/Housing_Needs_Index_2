@@ -18,8 +18,8 @@ module.exports = function(map) {
                 let selto = document.getElementById("selto");
                 let agegroups = document.getElementById("agegroups");
 
-                var downloadhref = encodeURIComponent(window.location.origin + window.location.pathname + "index.html?print=yes" + "&stat=" + stat_select.value + "&from=" + selfrom.value + "&to=" + selto.value + "&agegroups=" + agegroups.value);
-                console.log(downloadhref);
+                var downloadhref = encodeURIComponent(window.location.origin + window.location.pathname + "index.html?print=yes" + "&stat=" + stat_select.value + "&from=" + selfrom.value + "&to=" + selto.value + "&age=" + agegroups.value);
+                console.log(agegroups.value);
                 var link = document.createElement('a');
                 link.href = 'https://gis.dola.colorado.gov/phantom/screenshot?website=' + downloadhref + '&filename=agemap&timer=15000&width=900';
                 document.body.appendChild(link);
