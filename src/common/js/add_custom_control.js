@@ -144,7 +144,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             let title_h2 = document.querySelector('.title h2');
             let selfrom: any = document.getElementById("selfrom");
             let selto: any = document.getElementById("selto");
-            let ages: any = document.getElementByID("agegroups");
+            let ages: any = document.getElementById("agegroups");
             title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text + ": Ages " + ages.value;
     
             refreshdata(layer, main_data);
