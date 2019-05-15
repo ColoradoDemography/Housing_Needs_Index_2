@@ -16,10 +16,20 @@ module.exports = function(map) {
                 let stat_select = document.getElementById('stat');
                 let selfrom = document.getElementById("selfrom");
                 let selto = document.getElementById("selto");
-                let agegroups = document.getElementById("agegroups");
+                let agecontrol = document.getElementById("agegroups");
+                
+                var collection = agecontrol.selectedOptions;
+                var age_string = "";
+                
+                for (var i=0; i<collection.length; i++) {
+                    if (i !== 0) {
+                         age_string += ",";
+                    }
+                    age_string += collection[i].value;
+                }
 
-                var downloadhref = encodeURIComponent(window.location.origin + window.location.pathname + "index.html?print=yes" + "&stat=" + stat_select.value + "&from=" + selfrom.value + "&to=" + selto.value + "&age=" + agegroups.value);
-                console.log(agegroups.value);
+                var downloadhref = encodeURIComponent(window.location.origin + window.location.pathname + "index.html?print=yes" + "&stat=" + stat_select.value + "&from=" + selfrom.value + "&to=" + selto.value + "&age=" + age_string);
+                //console.log(agegroups.value);
                 var link = document.createElement('a');
                 link.href = 'https://gis.dola.colorado.gov/phantom/screenshot?website=' + downloadhref + '&filename=agemap&timer=15000&width=900';
                 document.body.appendChild(link);

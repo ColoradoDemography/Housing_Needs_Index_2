@@ -25,12 +25,12 @@ module.exports = function() {
         stat_val = stat_element.options[stat_element.selectedIndex].value;
 
         for (var i=0; i<collection.length; i++) {
-             if (i !== 0) {
+            if (i !== 0) {
                  age_string += ",";
+            }
+            age_string += collection[i].value;
         }
-        age_string += collection[i].value;
-        }
-    
+
     }
 
     var yearset = "";
