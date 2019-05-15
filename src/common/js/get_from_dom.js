@@ -19,6 +19,7 @@ module.exports = function() {
         var from_element = document.getElementById("selfrom");
         var to_element = document.getElementById("selto");
         var collection = agecontrol.selectedOptions;
+        console.log(collection);
 
         first_year = parseInt(from_element.options[from_element.selectedIndex].value);
         last_year = parseInt(to_element.options[to_element.selectedIndex].value);
@@ -58,9 +59,9 @@ module.exports = function() {
     // }
     
     if (age_string === "") {
-        age_string = "0 to 4";
+         age_string = "0 to 4";
     }
-    //console.log(age_string, yearset, stat_val);
+    console.log(age_string, yearset, stat_val);
     return [age_string, yearset, stat_val]
 
 }

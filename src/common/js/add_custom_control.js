@@ -25,7 +25,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
         var div = L.DomUtil.create('div', 'command bord');
         div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Total Age Group Change</option><option value='1'>Percent Age Group Change</option><option value='3'>Age Group Population</option></select><br />" +
             "<br /><span>From:</span>&nbsp;&nbsp;<select id='selfrom'>" + queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + "</select><br />" +
-            "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='0 to 4' selected>0 to 4</option>" + 
+            "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='0 to 4'>0 to 4</option>" + 
                 "<option value='5 to 9'>5 to 9</option>" +
                 "<option value='10 to 14'>10 to 14</option>" +
                 "<option value='15 to 19'>15 to 19</option>" +
@@ -123,8 +123,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
     //intialize!
     var querystring = getJsonFromUrl();
     console.log(querystring);
-    console.log(querystring.age);
-    
+
     if ('print' in querystring && 'stat' in querystring && 'from' in querystring && 'to' in querystring && 'age' in querystring) {
     
             map.panTo(L.latLng(39.35, -104.3));
@@ -135,8 +134,8 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             f.selected = true;
             let g: any = document.querySelector('#selto [value="' + querystring.to + '"]');
             g.selected = true;
-            let h: any = document.querySelector('#agegroups [value="' + querystring.age + '"]');
-            h.selected = true;
+            let h: any = document.querySelectorAll('#agegroups [value="' + querystring.age + '"]');
+            h.selectedOptions = true;
             document.getElementsByClassName('command')[0].style.display = 'none';
             document.getElementsByClassName('leaflet-top leaflet-right')[0].style.display = 'none';
     
@@ -146,21 +145,22 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             let title_h2 = document.querySelector('.title h2');
             let selfrom: any = document.getElementById("selfrom");
             let selto: any = document.getElementById("selto");
-            let agecontrol = document.getElementById("agegroups");
+            // let agecontrol: any = document.getElementById("agegroups");
                 
-            var collection = agecontrol.selectedOptions;
-            var age_string = "";
+            // var collection = agecontrol.selectedOptions;
+            // console.log(collection.length);
+            // var age_string = "";
             
-            for (var i=0; i<collection.length; i++) {
-                if (i !== 0) {
-                     age_string += ",";
-                }
-                age_string += collection[i].value;
-            }
-            console.log("before innerHTML");
-            console.log(age_string);
+            // for (var i=0; i<collection.length; i++) {
+            //     if (i !== 0) {
+            //          age_string += ",";
+            //     }
+            //     age_string += collection[i].value;
+            // }
+            // console.log("before innerHTML");
+            // console.log(age_string);
             
-            title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text + ": Ages " + age_string;
+            title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text + ": Ages " + querystring.age;
     
             refreshdata(layer, main_data);
         } else {
