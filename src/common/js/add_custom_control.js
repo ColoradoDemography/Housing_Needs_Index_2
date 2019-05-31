@@ -150,7 +150,8 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             let title_h2 = document.querySelector('.title h2');
             let selfrom: any = document.getElementById("selfrom");
             let selto: any = document.getElementById("selto");
-            if (stat_select == '3'){
+            console.log(stat_select);
+            if (stat_select.options[stat_select.selectedIndex].text == 'Age Group Population'){
                 title_h2.innerHTML = "Colorado, " + selfrom.value + ":&nbsp;&nbsp;" + stat_text + ":&nbsp;&nbsp;" + querystring.age;
             } else {
                 title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text + ":&nbsp;&nbsp;" + querystring.age;
