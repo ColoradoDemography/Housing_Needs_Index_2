@@ -47,6 +47,17 @@ module.exports = function() {
             }
             return agepop;
         }
+        
+        //just do 0 to number of age categories
+        this.retrieveTtlCountyPop = function(fips, year) {
+            var allpop = 0;
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].countyfips === fips && data[i].year === year) {
+                    allpop = allpop + parseInt(data[i].totalpopulation);
+                }
+            }
+            return allpop;
+        }
 
         this.retrieveTtlPopChg = function(fips) {
             return (this.retrieveCountyPop(fips, last_year) - this.retrieveCountyPop(fips, first_year));
