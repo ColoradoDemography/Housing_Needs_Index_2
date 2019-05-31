@@ -131,6 +131,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             f.selected = true;
             let g: any = document.querySelector('#selto [value="' + querystring.to + '"]');
             g.selected = true;
+            console.log(querystring.stat);
 
             var ageselector = document.querySelectorAll('select#agegroups option');
             querystring.age.split(",").forEach(function(h){
@@ -145,7 +146,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
     
             let stat_select: any = document.getElementById('stat');
             let stat_text: any = stat_select.options[stat_select.selectedIndex].text;
-    
+
             let title_h2 = document.querySelector('.title h2');
             let selfrom: any = document.getElementById("selfrom");
             let selto: any = document.getElementById("selto");
