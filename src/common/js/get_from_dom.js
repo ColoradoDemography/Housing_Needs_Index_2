@@ -6,7 +6,6 @@ module.exports = function() {
     var age_string = "";
 
     var stat_element = document.getElementById("stat");
-    var agecontrol = document.getElementById("agegroups");
     
     //chicken and the egg.  if this has been called before custom control was created
     if (stat_element === null) {
@@ -18,20 +17,10 @@ module.exports = function() {
 
         var from_element = document.getElementById("selfrom");
         var to_element = document.getElementById("selto");
-        var collection = agecontrol.selectedOptions;
-        console.log(collection);
 
         first_year = parseInt(from_element.options[from_element.selectedIndex].value);
         last_year = parseInt(to_element.options[to_element.selectedIndex].value);
         stat_val = stat_element.options[stat_element.selectedIndex].value;
-
-        for (var i=0; i<collection.length; i++) {
-            if (i !== 0) {
-                 age_string += ",";
-            }
-            age_string += collection[i].value;
-        }
-
     }
 
     var yearset = "";
@@ -47,21 +36,21 @@ module.exports = function() {
         yearset = String(first_year)
     }
     
-    
-    // var collection = agecontrol.selectedOptions;
+    var agecontrol = document.getElementById("agegroups");
+    var collection = agecontrol.selectedOptions;
 
     
-    // for (var i=0; i<collection.length; i++) {
-    //      if (i !== 0) {
-    //          age_string += ",";
-    //      }
-    //      age_string += collection[i].value;
-    // }
+    for (var i=0; i<collection.length; i++) {
+         if (i !== 0) {
+             age_string += ",";
+         }
+         age_string += collection[i].value;
+    }
     
     if (age_string === "") {
-         age_string = "0 to 4";
+        age_string = "0 to 4";
     }
-    console.log(age_string, yearset, stat_val);
+    //console.log(age_string, yearset, stat_val);
     return [age_string, yearset, stat_val]
 
 }

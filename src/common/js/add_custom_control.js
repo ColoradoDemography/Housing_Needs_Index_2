@@ -1,5 +1,3 @@
-// @flow
-
 var refreshdata = require("./refresh_data.js");
 
 
@@ -122,8 +120,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     //intialize!
     var querystring = getJsonFromUrl();
-    console.log(querystring);
-
+    
     if ('print' in querystring && 'stat' in querystring && 'from' in querystring && 'to' in querystring && 'age' in querystring) {
     
             map.panTo(L.latLng(39.35, -104.3));
@@ -134,8 +131,15 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             f.selected = true;
             let g: any = document.querySelector('#selto [value="' + querystring.to + '"]');
             g.selected = true;
-            let h: any = document.querySelectorAll('#agegroups [value="' + querystring.age + '"]');
-            h.selectedOptions = true;
+
+            var ageselector = document.querySelectorAll('select#agegroups option');
+            querystring.age.split(",").forEach(function(h){
+                for (var k = 0; k < ageselector.length; k++){
+                    if (h.indexOf(ageselector[k].value) != -1){
+                        ageselector[k].setAttribute('selected', 'selected');
+                    } 
+                }
+            });
             document.getElementsByClassName('command')[0].style.display = 'none';
             document.getElementsByClassName('leaflet-top leaflet-right')[0].style.display = 'none';
     
@@ -145,22 +149,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             let title_h2 = document.querySelector('.title h2');
             let selfrom: any = document.getElementById("selfrom");
             let selto: any = document.getElementById("selto");
-            // let agecontrol: any = document.getElementById("agegroups");
-                
-            // var collection = agecontrol.selectedOptions;
-            // console.log(collection.length);
-            // var age_string = "";
-            
-            // for (var i=0; i<collection.length; i++) {
-            //     if (i !== 0) {
-            //          age_string += ",";
-            //     }
-            //     age_string += collection[i].value;
-            // }
-            // console.log("before innerHTML");
-            // console.log(age_string);
-            
-            title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text + ": Ages " + querystring.age;
+            title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text + ":&nbsp;&nbsp;" + querystring.age;
     
             refreshdata(layer, main_data);
         } else {
