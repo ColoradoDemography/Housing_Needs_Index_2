@@ -38,6 +38,6 @@ module.exports = function(main_data, age_string, years_string, callback) {
         return false;
 
     });
-    //console.log(filtered_data);
+    console.log(filtered_data);
     if (callback) callback(filtered_data);
 }

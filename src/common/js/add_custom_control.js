@@ -21,7 +21,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     command.onAdd = function() {
         var div = L.DomUtil.create('div', 'command bord');
-        div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Total Age Group Change</option><option value='1'>Percent Age Group Change</option><option value='3'>Age Group Population</option>></select><br />" +//<option value='4'>Age Group Percent</option></select><br />" +
+        div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Total Age Group Change</option><option value='1'>Percent Age Group Change</option><option value='3'>Age Group Population</option><option value='4'>Age Group Percent</option></select><br />" +
             "<br /><span>From:</span>&nbsp;&nbsp;<select id='selfrom'>" + queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + "</select><br />" +
             "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='0 to 4'>0 to 4</option>" + 
                 "<option value='5 to 9'>5 to 9</option>" +
@@ -56,7 +56,13 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
         refreshdata(layer, main_data);
         //hide second year option if viewing single year
         var stat_element = document.getElementById("stat");
-        if (stat_element.options[stat_element.selectedIndex].value === '3' || stat_element.options[stat_element.selectedIndex].value === '4') {
+        console.log(stat_element.options[stat_element.selectedIndex].value);
+        if (stat_element.options[stat_element.selectedIndex].value === '3') {
+            $("span:first").text("Year:");
+            $("to:first").text("");
+            $("#selto").hide();
+            //selto_element.style.display = "none";
+        } else if (stat_element.options[stat_element.selectedIndex].value === '4') {
             $("span:first").text("Year:");
             $("to:first").text("");
             $("#selto").hide();
@@ -151,7 +157,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             let selfrom: any = document.getElementById("selfrom");
             let selto: any = document.getElementById("selto");
             console.log(stat_select);
-            if (stat_select.options[stat_select.selectedIndex].text == 'Age Group Population'){
+            if (stat_select.options[stat_select.selectedIndex].text == 'Age Group Population'||stat_select.options[stat_select.selectedIndex].text == 'Age Group Percent'){
                 title_h2.innerHTML = "Colorado, " + selfrom.value + ":&nbsp;&nbsp;" + stat_text + ":&nbsp;&nbsp;" + querystring.age;
             } else {
                 title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text + ":&nbsp;&nbsp;" + querystring.age;
@@ -159,7 +165,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             
             refreshdata(layer, main_data);
         } else {
-            let e: any = document.querySelector('#selto [value="2017"]');
+            let e: any = document.querySelector('#selto [value="2018"]');
             e.selected = true;
             refreshdata(layer, main_data);
     

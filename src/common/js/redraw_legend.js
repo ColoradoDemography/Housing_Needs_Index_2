@@ -111,7 +111,7 @@ module.exports = function(min, max, num, breaks) {
         htmlstring += "<tr><td colspan='4'>Percent change<br/>in selected age groups<br/>from year to year</td></tr></table>";
     }
     if (num === "4") {
-        htmlstring += "<tr><td colspan='4'>Average change in population<br/>for each year selected</td></tr></table>";
+        htmlstring += "<tr><td colspan='4'>Percent of population<br/>of selected age groups<br/>for the year selected</td></tr></table>";
     }
     if (num === "3") {
         htmlstring += "<tr><td colspan='4'>Total population<br/>of selected age groups<br/>for the year selected</td></tr></table>";

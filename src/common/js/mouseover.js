@@ -30,7 +30,7 @@ module.exports = function(e, worker_data) {
             }) + " %";
         }
         if (stat === "4") {
-            result_value = cMap.retrieveAvgPopChg(fips).toLocaleString(undefined, {
+            result_value = cMap.retrievePctPop(fips).toLocaleString(undefined, {
                 maximumFractionDigits: 0
             });
         }
