@@ -21,7 +21,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     command.onAdd = function() {
         var div = L.DomUtil.create('div', 'command bord');
-        div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Total Age Group Change</option><option value='1'>Percent Age Group Change</option><option value='3'>Age Group Population</option><option value='4'>Age Group Percent</option></select><br />" +
+        div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Total Age Group Change</option><option value='1'>Percent Age Group Change</option><option value='3'>Age Group Population</option></select><br />" +//<option value='4'>Age Group Percent</option></select><br />" +
             "<br /><span>From:</span>&nbsp;&nbsp;<select id='selfrom'>" + queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + "</select><br />" +
             "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='0 to 4'>0 to 4</option>" + 
                 "<option value='5 to 9'>5 to 9</option>" +
