@@ -23,7 +23,7 @@ module.exports = function(min, max, num, breaks) {
 
     var add_pct = "";
 
-    if (num === "1" || num === "7") {
+    if (num === "1" || num === "4") {
         add_pct = "%";
     }
 
