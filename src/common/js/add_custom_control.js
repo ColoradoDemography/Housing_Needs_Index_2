@@ -9,19 +9,19 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
         position: 'topleft'
     });
     //var ages_data = worker_data[2];
-    var yrs_data = worker_data[1];
+    //var yrs_data = worker_data[1];
 
     var main_data = worker_data[0];
 
-    var queriedYears: string = "";
+    //var queriedYears: string = "";
 
-    for (let i = 0; i < yrs_data.length; i++) {
-        queriedYears += "<option style='color:" + ((yrs_data[i].datatype === "Estimate") ? "black" : "red") + "' value='" + yrs_data[i].year + "'>" + yrs_data[i].year + "</option>";
-    }
+    //for (let i = 0; i < yrs_data.length; i++) {
+    //    queriedYears += "<option style='color:" + ((yrs_data[i].datatype === "Estimate") ? "black" : "red") + "' value='" + yrs_data[i].year + "'>" + yrs_data[i].year + "</option>";
+    //}
 
     command.onAdd = function() {
         var div = L.DomUtil.create('div', 'command bord');
-        div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Total Age Group Change</option><option value='1'>Percent Age Group Change</option><option value='3'>Age Group Population</option><option value='4'>Age Group Percent</option></select><br />" +
+        div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Net Migrants</option><option value='1'>Migration Rate per 1,000</option></select><br />" +
             "<br /><span>From:</span>&nbsp;&nbsp;<select id='selfrom'>" + queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + "</select><br />" +
             "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='0 to 4'>0 to 4</option>" + 
                 "<option value='5 to 9'>5 to 9</option>" +
@@ -38,11 +38,11 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='60 to 64'>60 to 64</option>" +
                 "<option value='65 to 69'>65 to 69</option>" +
                 "<option value='70 to 74'>70 to 74</option>" +
-                "<option value='75 to 79'>75 to 79</option>" +
-                "<option value='80 to 84'>80 to 84</option>" +
-                "<option value='85 to 89'>85 to 89</option>" +
-                "<option value='90 to 94'>90 to 94</option>" +
-                "<option value='95 and over'>95 and over</option>" +
+                //"<option value='75 to 79'>75 to 79</option>" +
+                //"<option value='80 to 84'>80 to 84</option>" +
+                //"<option value='85 to 89'>85 to 89</option>" +
+                //"<option value='90 to 94'>90 to 94</option>" +
+                //"<option value='95 and over'>95 and over</option>" +
             "</select>";
             //"<br /><button name='display' id='display' align='center'>Show Data</button>";
             
@@ -57,12 +57,12 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
         //hide second year option if viewing single year
         var stat_element = document.getElementById("stat");
         console.log(stat_element.options[stat_element.selectedIndex].value);
-        if (stat_element.options[stat_element.selectedIndex].value === '3') {
+        if (stat_element.options[stat_element.selectedIndex].value === '1') {
             $("span:first").text("Year:");
             $("to:first").text("");
             $("#selto").hide();
             //selto_element.style.display = "none";
-        } else if (stat_element.options[stat_element.selectedIndex].value === '4') {
+        } else if (stat_element.options[stat_element.selectedIndex].value === '2') {
             $("span:first").text("Year:");
             $("to:first").text("");
             $("#selto").hide();
@@ -165,7 +165,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             
             refreshdata(layer, main_data);
         } else {
-            let e: any = document.querySelector('#selto [value="2021"]');
+            let e: any = document.querySelector('#selto [value="2010"]');
             e.selected = true;
             refreshdata(layer, main_data);
     
