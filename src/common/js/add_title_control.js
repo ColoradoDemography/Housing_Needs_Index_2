@@ -9,7 +9,7 @@ module.exports = function(map: Object) {
     });
     title.onAdd = function() {
         var div = L.DomUtil.create('div', 'title bord');
-        div.innerHTML = '<h2>Population by Age Groups</h2>';
+        div.innerHTML = '<h2>Migration by Age Groups</h2>';
         return div;
     };
     title.addTo(map);

@@ -9,7 +9,7 @@ module.exports = function() {
     
     //chicken and the egg.  if this has been called before custom control was created
     if (stat_element === null) {
-        first_year = "1990";
+        first_year = "2010";
         last_year = "1991";
         stat_val = "2";
         age_string = "0 to 4";

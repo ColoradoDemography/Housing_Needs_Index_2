@@ -88,8 +88,8 @@ module.exports = function() {
             this.retrieveCountyPop = function(fips, year) {
                 var agepop = 0;
                 for (let i = 0; i < data.length; i++) {
-                        if (data[i].countyfips === fips && data[i].year === year) {
-                            agepop = agepop + parseInt(data[i].totalpopulation);
+                        if (data[i].countyfips === fips && data[i].year === year && data[i].datatype === 'netmigration') {
+                            agepop = agepop + parseInt(data[i].value);
                         }
                     }
                 return agepop; 
