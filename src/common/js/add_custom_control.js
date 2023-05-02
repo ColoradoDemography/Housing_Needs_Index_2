@@ -15,14 +15,22 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     var queriedYears: string = "";
 
-    for (let i = 0;){// i < yrs_data.length; i++) {
-        queriedYears += "<option style='color:" + ((data[i].datatype === "Estimate") ? "black" : "red") + "' value='" + data[i].year + "'>" + data[i].year + "</option>";
-    }
+    //for (let i = 0; i < 7; i++) {
+    //    queriedYears += "<option style='color:" + ((main_data[i].datatype === "Estimate") ? "black" : "red") + "' value='" + main_data[i].year + "'>" + main_data[i].year + "</option>";
+    //}
 
     command.onAdd = function() {
         var div = L.DomUtil.create('div', 'command bord');
         div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Net Migrants</option><option value='1'>Migration Rate per 1,000</option></select><br />" +
-            "<br /><span>From:</span>&nbsp;&nbsp;<select id='selfrom'>" + queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + "</select><br />" +
+            "<br /><span>Year:</span>&nbsp;&nbsp;<select id='selfrom'>" + //queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + 
+            "<option value='1950'>1950</option>" +
+            "<option value='1960'>1960</option>" +
+            "<option value='1970'>1970</option>" +
+            "<option value='1980'>1980</option>" +
+            "<option value='1990'>1990</option>" +
+            "<option value='2000'>2000</option>" +
+            "<option value='2010'>2010</option>" +
+            "</select><br />" +
             "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='0 to 4'>0 to 4</option>" + 
                 "<option value='5 to 9'>5 to 9</option>" +
                 "<option value='10 to 14'>10 to 14</option>" +
@@ -57,7 +65,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
         //hide second year option if viewing single year
         var stat_element = document.getElementById("stat");
         console.log(stat_element.options[stat_element.selectedIndex].value);
-        if (stat_element.options[stat_element.selectedIndex].value === '1') {
+        /* if (stat_element.options[stat_element.selectedIndex].value === '1') {
             $("span:first").text("Year:");
             $("to:first").text("");
             $("#selto").hide();
@@ -72,8 +80,8 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             $("to:first").text("To:");
             $("#selto").show();
             //selto_element.style.display = "block";
-        }
-        // //console.log(main_data);
+        } */
+        console.log(main_data);
     }, false);
 
     document.getElementById("selfrom").addEventListener("change", function() {
