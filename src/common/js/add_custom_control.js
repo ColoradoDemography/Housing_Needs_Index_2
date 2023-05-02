@@ -13,11 +13,11 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     var main_data = worker_data[0];
 
-    //var queriedYears: string = "";
+    var queriedYears: string = "";
 
-    //for (let i = 0; i < yrs_data.length; i++) {
-    //    queriedYears += "<option style='color:" + ((yrs_data[i].datatype === "Estimate") ? "black" : "red") + "' value='" + yrs_data[i].year + "'>" + yrs_data[i].year + "</option>";
-    //}
+    for (let i = 0;){// i < yrs_data.length; i++) {
+        queriedYears += "<option style='color:" + ((data[i].datatype === "Estimate") ? "black" : "red") + "' value='" + data[i].year + "'>" + data[i].year + "</option>";
+    }
 
     command.onAdd = function() {
         var div = L.DomUtil.create('div', 'command bord');
