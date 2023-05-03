@@ -13,7 +13,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     var main_data = worker_data[0];
 
-    var queriedYears: string = "";
+    //var queriedYears: string = "";
 
     //for (let i = 0; i < 7; i++) {
     //    queriedYears += "<option style='color:" + ((main_data[i].datatype === "Estimate") ? "black" : "red") + "' value='" + main_data[i].year + "'>" + main_data[i].year + "</option>";
@@ -29,23 +29,23 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             "<option value='1980'>1980</option>" +
             "<option value='1990'>1990</option>" +
             "<option value='2000'>2000</option>" +
-            "<option value='2010'>2010</option>" +
+            "<option value='2010' selected>2010</option>" +
             "</select><br />" +
-            "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='0 to 4'>0 to 4</option>" + 
-                "<option value='5 to 9'>5 to 9</option>" +
-                "<option value='10 to 14'>10 to 14</option>" +
-                "<option value='15 to 19'>15 to 19</option>" +
-                "<option value='20 to 24'>20 to 24</option>" +
-                "<option value='25 to 29'>25 to 29</option>" +
-                "<option value='30 to 34'>30 to 34</option>" +
-                "<option value='35 to 39'>35 to 39</option>" +
-                "<option value='40 to 44'>40 to 44</option>" +
-                "<option value='45 to 49'>45 to 49</option>" +
-                "<option value='50 to 54'>50 to 54</option>" +
-                "<option value='55 to 59'>55 to 59</option>" +
-                "<option value='60 to 64'>60 to 64</option>" +
-                "<option value='65 to 69'>65 to 69</option>" +
-                "<option value='70 to 74'>70 to 74</option>" +
+            "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='00_04' selected>0 to 4</option>" + 
+                "<option value='05_09'>5 to 9</option>" +
+                "<option value='10_14'>10 to 14</option>" +
+                "<option value='15_19'>15 to 19</option>" +
+                "<option value='20_24'>20 to 24</option>" +
+                "<option value='25_29'>25 to 29</option>" +
+                "<option value='30_34'>30 to 34</option>" +
+                "<option value='35_39'>35 to 39</option>" +
+                "<option value='40_44'>40 to 44</option>" +
+                "<option value='45_49'>45 to 49</option>" +
+                "<option value='50_54'>50 to 54</option>" +
+                "<option value='55_59'>55 to 59</option>" +
+                "<option value='60_64'>60 to 64</option>" +
+                "<option value='65_69'>65 to 69</option>" +
+                "<option value='70_74'>70 to 74</option>" +
                 //"<option value='75 to 79'>75 to 79</option>" +
                 //"<option value='80 to 84'>80 to 84</option>" +
                 //"<option value='85 to 89'>85 to 89</option>" +
@@ -64,7 +64,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
         refreshdata(layer, main_data);
         //hide second year option if viewing single year
         var stat_element = document.getElementById("stat");
-        console.log(stat_element.options[stat_element.selectedIndex].value);
+        //console.log(stat_element.options[stat_element.selectedIndex].value);
         /* if (stat_element.options[stat_element.selectedIndex].value === '1') {
             $("span:first").text("Year:");
             $("to:first").text("");
@@ -86,13 +86,14 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     document.getElementById("selfrom").addEventListener("change", function() {
         refreshdata(layer, main_data);
-        //console.log(main_data);
+        console.log(main_data);
+        console.log("selfrom");
     }, false);
 
-    document.getElementById("selto").addEventListener("change", function() {
+    /* document.getElementById("selto").addEventListener("change", function() {
         refreshdata(layer, main_data);
         //console.log(main_data);
-    }, false);
+    }, false); */
     
     document.getElementById("agegroups").addEventListener("change", function() {
         refreshdata(layer, main_data);
@@ -143,9 +144,9 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             e.selected = true;
             let f: any = document.querySelector('#selfrom [value="' + querystring.from + '"]');
             f.selected = true;
-            let g: any = document.querySelector('#selto [value="' + querystring.to + '"]');
-            g.selected = true;
-            console.log(querystring.stat);
+           // let g: any = document.querySelector('#selto [value="' + querystring.to + '"]');
+            //g.selected = true;
+            //console.log(querystring.stat);
 
             var ageselector = document.querySelectorAll('select#agegroups option');
             querystring.age.split(",").forEach(function(h){
@@ -163,17 +164,17 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
             let title_h2 = document.querySelector('.title h2');
             let selfrom: any = document.getElementById("selfrom");
-            let selto: any = document.getElementById("selto");
+            //let selto: any = document.getElementById("selto");
             console.log(stat_select);
-            if (stat_select.options[stat_select.selectedIndex].text == 'Age Group Population'||stat_select.options[stat_select.selectedIndex].text == 'Age Group Percent'){
+            /* if (stat_select.options[stat_select.selectedIndex].text == 'Age Group Population'||stat_select.options[stat_select.selectedIndex].text == 'Age Group Percent'){
                 title_h2.innerHTML = "Colorado, " + selfrom.value + ":&nbsp;&nbsp;" + stat_text + ":&nbsp;&nbsp;" + querystring.age;
             } else {
                 title_h2.innerHTML = "Colorado, " + selfrom.value + " to " + selto.value + ":&nbsp;&nbsp;" + stat_text + ":&nbsp;&nbsp;" + querystring.age;
-            }
+            } */
             
             refreshdata(layer, main_data);
         } else {
-            let e: any = document.querySelector('#selto [value="2010"]');
+            let e: any = document.querySelector('#selfrom [value="2010"]');
             e.selected = true;
             refreshdata(layer, main_data);
     

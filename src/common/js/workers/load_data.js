@@ -23,7 +23,7 @@ onmessage = function(e) {
             fetchJSONFile('../data/agemigration.json',function(data) {
                 
                 postMessage([data]);
-                console.log(data);
+                //console.log(data);
                 close(); //worker is finished
 
             });

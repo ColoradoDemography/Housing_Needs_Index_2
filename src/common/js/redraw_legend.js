@@ -105,10 +105,10 @@ module.exports = function(min, max, num, breaks) {
     }
 
     if (num === "2") {
-        htmlstring += "<tr><td colspan='4'>Year to year change<br/>in selected age groups</td></tr></table>";
+        htmlstring += "<tr><td colspan='4'>Net Migration<br/>in selected age groups</td></tr></table>";
     }
     if (num === "1") {
-        htmlstring += "<tr><td colspan='4'>Percent change<br/>in selected age groups<br/>from year to year</td></tr></table>";
+        htmlstring += "<tr><td colspan='4'>Migration Rate<br/>in selected age groups<br/>from year to year</td></tr></table>";
     }
     if (num === "4") {
         htmlstring += "<tr><td colspan='4'>Percent of population<br/>of selected age groups<br/>for the year selected</td></tr></table>";

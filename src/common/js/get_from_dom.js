@@ -10,16 +10,16 @@ module.exports = function() {
     //chicken and the egg.  if this has been called before custom control was created
     if (stat_element === null) {
         first_year = "2010";
-        last_year = "1991";
+        last_year = "1000";
         stat_val = "2";
         age_string = "0 to 4";
     } else {
 
         var from_element = document.getElementById("selfrom");
-        var to_element = document.getElementById("selto");
+        //var to_element = document.getElementById("selto");
 
         first_year = parseInt(from_element.options[from_element.selectedIndex].value);
-        last_year = parseInt(to_element.options[to_element.selectedIndex].value);
+        //last_year = parseInt(to_element.options[to_element.selectedIndex].value);
         stat_val = stat_element.options[stat_element.selectedIndex].value;
     }
 

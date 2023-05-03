@@ -26,7 +26,7 @@ module.exports = function() {
               csvData.push(jsonObject[i].split(','));
             }*/
 
-            function getData(year) {
+            /* function getData(year) {
 
               var fips_str = "1,3,5,7,9,11,13,14,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,63,65,67,69,71,73,75,77,79,81,83,85,87,89,91,93,95,97,99,101,103,105,107,109,111,113,115,117,119,121,123,125";    
               var data = $.ajax({
@@ -41,11 +41,11 @@ module.exports = function() {
             }
             
             console.log("Passed");
-
+*/
 
 
             var fips_array = [1, 3, 5, 7, 9, 11, 13, 14, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 123, 125];
-            
+             
 
             
             
@@ -81,17 +81,18 @@ module.exports = function() {
             }();
             this.number_of_years = number_of_years;
             
-            var jsonData = getData(first_year);
+            //var jsonData = getData(first_year);
             
             /* POPULATION */
 
-            this.retrieveCountyPop = function(fips, year) {
+            /* this.retrieveCountyPop = function(fips, year) {
                 var agepop = 0;
                 for (let i = 0; i < data.length; i++) {
                         if (data[i].countyfips === fips && data[i].year === year && data[i].datatype === 'netmigration') {
                             agepop = agepop + parseInt(data[i].value);
                         }
                     }
+                    console.log("Agepop " + agepop);
                 return agepop; 
             }
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,7 +213,7 @@ module.exports = function() {
 
             /* PERCENT POPULATION */
 
-            this.retrievePctPopChg = function(fips) {
+           /*  this.retrievePctPopChg = function(fips) {
                 var pctpopchg = ((this.retrieveTtlPopChg(fips) / this.retrieveCountyPop(fips, first_year)) * 100).toFixed(2);
                 if (isFinite(pctpopchg)) {
                     return pctpopchg;
@@ -323,7 +324,7 @@ module.exports = function() {
                 return values[half];
             else
                 return (values[half - 1] + values[half]) / 2.0;
-        }
+        } */
             
             /*this.getMaxPctPop = function() {
                 var max_value = -Infinity;
@@ -346,6 +347,87 @@ module.exports = function() {
                 }
                 return min_value;
             }*/
+
+            /* MIGRATION */
+
+            this.retrieveCountyMigration = function(fips, year) {
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].countyfips === fips && data[i].year === year && data[i].datatype === "netmigration") {
+                        return Number(data[i].value);
+                    }
+                }
+                return 0;
+            }
+
+            this.retrieveCountyMigrationRate = function(fips, year) {
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].countyfips === fips && data[i].year === year && data[i].datatype === "migrationrate") {
+                        return Number(data[i].value);
+                    }
+                }
+                return 0;
+            }
+
+            this.retrieveTtlMigration = function(fips) {
+                var running_total_migration = 0;
+                for (let j = (first_year + 1); j < (last_year + 1); j++) {
+                    running_total_migration += this.retrieveCountyMigration(fips, j);
+                }
+                return running_total_migration;
+            }
+
+            this.getMaxTtlMigration = function() {
+                var max_value = -Infinity;
+                for (let i = 0; i < fips_array.length; i++) {
+                    var current_county = this.retrieveTtlMigration(fips_array[i]);
+                    if (current_county > max_value) {
+                        max_value = current_county;
+                    }
+                }
+                return max_value;
+            }
+
+            this.getMinTtlMigration = function() {
+                var min_value = Infinity;
+                for (let i = 0; i < fips_array.length; i++) {
+                    var current_county = this.retrieveTtlMigration(fips_array[i]);
+                    if (current_county < min_value) {
+                        min_value = current_county;
+                    }
+                }
+                return min_value;
+            }
+
+
+            this.retrieveMigrationRate = function(fips) {
+                var running_total = 0;
+                for (let j = (first_year + 1); j < (last_year + 1); j++) {
+                    running_total += this.retrieveCountyMigrationRate(fips, j);
+                }
+                return (running_total / number_of_years).toFixed(2);
+            }
+
+            this.getMaxMigrationRate = function() {
+                var max_value = -Infinity;
+                for (let i = 0; i < fips_array.length; i++) {
+                    var current_county = parseFloat(this.retrieveMigrationRate(fips_array[i]));
+                    if (current_county > max_value) {
+                        max_value = current_county;
+                    }
+                }
+                return max_value;
+            }
+
+            this.getMinMigrationRate = function() {
+                var min_value = Infinity;
+                for (let i = 0; i < fips_array.length; i++) {
+                    var current_county = parseFloat(this.retrieveMigrationRate(fips_array[i]));
+                    if (current_county < min_value) {
+                        min_value = current_county;
+                    }
+                }
+                return min_value;
+            }
 
          }
 
