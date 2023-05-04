@@ -11,7 +11,7 @@ module.exports = function() {
     if (stat_element === null) {
         first_year = "2010";
         last_year = "1000";
-        stat_val = "2";
+        stat_val = "3";
         age_string = "0 to 4";
     } else {
 

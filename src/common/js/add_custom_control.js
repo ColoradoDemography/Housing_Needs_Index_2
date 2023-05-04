@@ -21,10 +21,10 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     command.onAdd = function() {
         var div = L.DomUtil.create('div', 'command bord');
-        div.innerHTML = "Statistic:<br /><select id='stat'><option value='2'>Net Migrants</option><option value='1'>Migration Rate per 1,000</option></select><br />" +
+        div.innerHTML = "Statistic:<br /><select id='stat'><option value='3'>Net Migrants</option><option value='4'>Migration Rate per 1,000</option></select><br />" +
             "<br /><span>Year:</span>&nbsp;&nbsp;<select id='selfrom'>" + //queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + 
-            "<option value='1950'>1950</option>" +
-            "<option value='1960'>1960</option>" +
+            //"<option value='1950'>1950</option>" +
+            //"<option value='1960'>1960</option>" +
             "<option value='1970'>1970</option>" +
             "<option value='1980'>1980</option>" +
             "<option value='1990'>1990</option>" +
