@@ -79,12 +79,23 @@ module.exports = function() {
         var jsonData = getData(first_year);
         
         /* POPULATION */
-
+        // Net migration
         this.retrieveCountyPop = function(fips, year) {
             var agepop = 0;
             for (let i = 0; i < data.length; i++) {
                     if (data[i].countyfips === fips && data[i].year === year) {
                         agepop = agepop + parseInt(data[i].netmigration);
+                    }
+                }
+            return agepop; 
+        }
+
+        // Population
+        this.retrieveCountyXPop = function(fips, year) {
+            var agepop = 0;
+            for (let i = 0; i < data.length; i++) {
+                    if (data[i].countyfips === fips && data[i].year === year) {
+                        agepop = agepop + parseInt(data[i].population);
                     }
                 }
             return agepop; 
@@ -105,36 +116,6 @@ module.exports = function() {
             }
             return allpop;
                                         
-        }
-
-        this.retrieveTtlPopChg = function(fips) {
-            return (this.retrieveCountyPop(fips, last_year) - this.retrieveCountyPop(fips, first_year));
-        }
-
-        this.retrieveTtlPop = function(fips) {
-            return this.retrieveCountyPop(fips, first_year);
-        }
-
-        this.getMaxTtlChange = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = (this.retrieveCountyPop(fips_array[i], last_year) - this.retrieveCountyPop(fips_array[i], first_year));
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
-
-        this.getMinTtlChange = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = (this.retrieveCountyPop(fips_array[i], last_year) - this.retrieveCountyPop(fips_array[i], first_year));
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
         }
 
         this.getMaxTtl = function() {
@@ -159,34 +140,6 @@ module.exports = function() {
             return min_value;
         }
 
-
-        this.retrieveAvgPopChg = function(fips) {
-            return (this.retrieveTtlPopChg(fips) / number_of_years);
-        }
-
-
-        this.getMaxAvgPopChg = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveAvgPopChg(fips_array[i]));
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
-
-        this.getMinAvgPopChg = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveAvgPopChg(fips_array[i]));
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }
-
         this.getMedianTotalPop = function() {
             var values = [];
             for (let i = 0; i < fips_array.length; i++) {
@@ -204,31 +157,37 @@ module.exports = function() {
             else
                 return (values[half - 1] + values[half]) / 2.0;
         }
-
-        /* PERCENT POPULATION */
-
-        this.retrievePctPopChg = function(fips) {
-            var pctpopchg = ((this.retrieveTtlPopChg(fips) / this.retrieveCountyPop(fips, first_year)) * 100).toFixed(2);
-            if (isFinite(pctpopchg)) {
-                return pctpopchg;
-            } else {
-                return 0;
-            }
+      
+        //Total Migrants
+        this.retrieveTtlPop = function(fips) {
+            return this.retrieveCountyPop(fips, first_year);
+        }
+        //Total Population
+        this.retrieveXTtlPop = function(fips) {
+            return this.retrieveXCountyPop(fips, first_year);
         }
 
-        this.retrievePctPop = function(fips) {
-            var pctpop = ((this.retrieveTtlPop(fips) / this.retrieveTtlCountyPop(fips, first_year)) * 100).toFixed(2);
-            if (isFinite(pctpop)) {
-                return pctpop;
-            } else {
-                return 0;
+        this.retrieveCountyMigrationRate = function(fips, year) {
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].countyfips === fips && data[i].year === year) {
+                    return (this.retrieveCountyPop / this.retrieveCountyXPop) * 1000;
+                }
             }
+            return 0;
         }
 
-        this.getMaxPctChange = function() {
+        this.retrieveTtlMigration = function(fips) {
+            var running_total_migration = 0;
+            for (let j = (first_year + 1); j < (last_year + 1); j++) {
+                running_total_migration += this.retrieveCountyPop(fips, j);
+            }
+            return running_total_migration;
+        }
+
+        this.getMaxTtlMigration = function() {
             var max_value = -Infinity;
             for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrievePctPopChg(fips_array[i]));
+                var current_county = this.retrieveTtlMigration(fips_array[i]);
                 if (current_county > max_value) {
                     max_value = current_county;
                 }
@@ -236,10 +195,10 @@ module.exports = function() {
             return max_value;
         }
 
-        this.getMinPctChange = function() {
+        this.getMinTtlMigration = function() {
             var min_value = Infinity;
             for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrievePctPopChg(fips_array[i]));
+                var current_county = this.retrieveTtlMigration(fips_array[i]);
                 if (current_county < min_value) {
                     min_value = current_county;
                 }
@@ -247,20 +206,18 @@ module.exports = function() {
             return min_value;
         }
 
-
-        this.retrieveAvgPctPopChg = function(fips) {
-            var calc = (((Math.pow((this.retrieveCountyPop(fips, last_year) / this.retrieveCountyPop(fips, first_year)), (1 / number_of_years))) - 1) * 100).toFixed(2);
-            if (isFinite(calc)) {
-                return calc;
-            } else {
-                return 0;
+        this.retrieveMigrationRate = function(fips) {
+            var running_total = 0;
+            for (let j = (first_year + 1); j < (last_year + 1); j++) {
+                running_total += this.retrieveCountyMigrationRate(fips, j);
             }
+            return (running_total / number_of_years).toFixed(2);
         }
 
-        this.getMaxAvgPctPopChg = function() {
+        this.getMaxMigrationRate = function() {
             var max_value = -Infinity;
             for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveAvgPctPopChg(fips_array[i]));
+                var current_county = parseFloat(this.retrieveMigrationRate(fips_array[i]));
                 if (current_county > max_value) {
                     max_value = current_county;
                 }
@@ -268,78 +225,17 @@ module.exports = function() {
             return max_value;
         }
 
-        this.getMinAvgPctPopChg = function() {
+        this.getMinMigrationRate = function() {
             var min_value = Infinity;
             for (let i = 0; i < fips_array.length; i++) {
-                var current_county = parseFloat(this.retrieveAvgPctPopChg(fips_array[i]));
+                var current_county = parseFloat(this.retrieveMigrationRate(fips_array[i]));
                 if (current_county < min_value) {
                     min_value = current_county;
                 }
             }
             return min_value;
         }
-
-    //Max and min for age percents
-        this.getMaxPctPop = function() {
-        var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = (this.retrieveCountyPop(fips_array[i], first_year)/this.retrieveTtlCountyPop(fips_array[i], first_year));
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-    }
-
-    this.getMinPctPop = function() {
-        var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = (this.retrieveCountyPop(fips_array[i], first_year)/this.retrieveTtlCountyPop(fips_array[i], first_year));
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-    }
-
-    this.getMedianPctPop = function() {
-        var values = [];
-        for (let i = 0; i < fips_array.length; i++) {
-            var current_county = parseFloat(this.retrievePctPop(fips_array[i]));
-            values.push(current_county);
-        }
-
-        values.sort(function(a, b) {
-            return a - b;
-        });
-
-        var half = Math.floor(values.length / 2);
-        if (values.length % 2)
-            return values[half];
-        else
-            return (values[half - 1] + values[half]) / 2.0;
-    }
         
-        /*this.getMaxPctPop = function() {
-            var max_value = -Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveCountyPop(fips_array[i], first_year);
-                if (current_county > max_value) {
-                    max_value = current_county;
-                }
-            }
-            return max_value;
-        }
-        this.getMinPctPop = function() {
-            var min_value = Infinity;
-            for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveCountyPop(fips_array[i], first_year);
-                if (current_county < min_value) {
-                    min_value = current_county;
-                }
-            }
-            return min_value;
-        }*/
 
     }
 

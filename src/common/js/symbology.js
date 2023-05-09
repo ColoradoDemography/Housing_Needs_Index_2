@@ -65,7 +65,7 @@ module.exports = function(geolayer, cMap, num) {
         min = cMap.getMinRateNaturalIncrease();
         breaks = [min * 0.5, min * 0.35, min * 0.2, min * 0.1, 0, max * 0.1, max * 0.2, max * 0.35, max * 0.5, max * 0.75];
     }
-    if (num === "12") {
+    if (num === "2") {
         max = cMap.getMaxMigrationRate();
         min = cMap.getMinMigrationRate();
         breaks = [min * 0.5, min * 0.35, min * 0.2, min * 0.1, 0, max * 0.1, max * 0.2, max * 0.35, max * 0.5, max * 0.75];
@@ -94,12 +94,7 @@ module.exports = function(geolayer, cMap, num) {
         min = cMap.getMinNatIncrease();
         breaks = [min * 0.5, min * 0.35, min * 0.2, min * 0.1, 0, max * 0.1, max * 0.2, max * 0.35, max * 0.5, max * 0.75];
     } */
-    if (num === "2") {
-        max = cMap.getMaxTtlMigration();
-        min = cMap.getMinTtlMigration();
-        breaks = [min * 0.5, min * 0.35, min * 0.2, min * 0.1, 0, max * 0.1, max * 0.2, max * 0.35, max * 0.5, max * 0.75];
-    }
-
+    
 
 
     redraw_legend(min, max, num, breaks);
@@ -111,12 +106,12 @@ module.exports = function(geolayer, cMap, num) {
         var value;
         var fips = parseInt(d.properties.COUNTYFP);
 
-        if (num === "3") {
+        if (num === "8") {
             value = cMap.retrievePctPopChg(fips);
         }
-        if (num === "2") {
-            value = cMap.retrieveTtlPopChg(fips);
-        }
+        //if (num === "2") {
+          //  value = cMap.retrieveTtlPopChg(fips);
+        //}
         if (num === "1") {
             value = cMap.retrieveTtlPop(fips);
         }
@@ -135,7 +130,7 @@ module.exports = function(geolayer, cMap, num) {
         if (num === "7") {
             value = cMap.retrieveRateNaturalIncrease(fips);
         }
-        if (num === "8") {
+        if (num === "2") {
             value = cMap.retrieveMigrationRate(fips);
         }
         if (num === "9") {
