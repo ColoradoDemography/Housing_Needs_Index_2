@@ -23,7 +23,7 @@ module.exports = function(min, max, num, breaks) {
 
     var add_pct = "";
 
-    if (num === "1" || num === "4") {
+    if (num === "3" || num === "4") {
         add_pct = "%";
     }
 
@@ -104,10 +104,10 @@ module.exports = function(min, max, num, breaks) {
         htmlstring += "<tr><td style='text-align: center;'><span style='color: " + legend_components[i].rgb_string + "'>&block;</span></td><td style='text-align: right;'>" + legend_components[i].lowtext + "</td><td style='text-align: center;'>" + legend_components[i].operator + "</td><td style='text-align: left;'>" + legend_components[i].hightext + "</td></tr>";
     }
 
-    if (num === "2") {
+    if (num === "1") {
         htmlstring += "<tr><td colspan='4'>Net Migration<br/>in selected age groups</td></tr></table>";
     }
-    if (num === "1") {
+    if (num === "2") {
         htmlstring += "<tr><td colspan='4'>Migration Rate<br/>in selected age groups<br/>from year to year</td></tr></table>";
     }
     if (num === "4") {

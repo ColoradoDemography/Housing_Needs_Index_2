@@ -19,12 +19,12 @@ module.exports = function(e, worker_data) {
 
         var result_value;
 
-        if (stat === "2") {
+        /* if (stat === "1") {
             result_value = cMap.retrieveTtlPopChg(fips).toLocaleString(undefined, {
                 maximumFractionDigits: 0
             });
-        }
-        if (stat === "1") {
+        } */
+        if (stat === "3") {
             result_value = parseFloat(cMap.retrievePctPopChg(fips)).toLocaleString(undefined, {
                 maximumFractionDigits: 1
             }) + " %";
@@ -34,7 +34,12 @@ module.exports = function(e, worker_data) {
                 maximumFractionDigits: 0
             }) + " %";
         }
-        if (stat === "3") {
+        if (stat === "1") {
+            result_value = parseFloat(cMap.retrieveTtlPop(fips)).toLocaleString(undefined, {
+                maximumFractionDigits: 0
+            });
+        }
+        if (stat === "2") {
             result_value = parseFloat(cMap.retrieveTtlPop(fips)).toLocaleString(undefined, {
                 maximumFractionDigits: 1
             });
