@@ -40,7 +40,7 @@ module.exports = function(e, worker_data) {
             });
         }
         if (stat === "2") {
-            result_value = parseFloat(cMap.retrieveTtlPop(fips)).toLocaleString(undefined, {
+            result_value = cMap.retrieveMigrationRate(fips).toLocaleString(undefined, {
                 maximumFractionDigits: 1
             });
         }

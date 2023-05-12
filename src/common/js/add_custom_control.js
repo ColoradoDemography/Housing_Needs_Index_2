@@ -22,14 +22,14 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
     command.onAdd = function() {
         var div = L.DomUtil.create('div', 'command bord');
         div.innerHTML = "Statistic:<br /><select id='stat'><option value='1'>Net Migrants</option><option value='2'>Migration Rate per 1,000</option></select><br />" +
-            "<br /><span>Year:</span>&nbsp;&nbsp;<select id='selfrom'>" + //queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + 
+            "<br /><span>Decade:</span>&nbsp;&nbsp;<select id='selfrom'>" + //queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + 
             //"<option value='1950'>1950</option>" +
             //"<option value='1960'>1960</option>" +
-            "<option value='1970'>1970</option>" +
-            "<option value='1980'>1980</option>" +
-            "<option value='1990'>1990</option>" +
-            "<option value='2000'>2000</option>" +
-            "<option value='2010' selected>2010</option>" +
+            "<option value='1970'>1970s</option>" +
+            "<option value='1980'>1980s</option>" +
+            "<option value='1990'>1990s</option>" +
+            "<option value='2000'>2000s</option>" +
+            "<option value='2010' selected>2010s</option>" +
             "</select><br />" +
             "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='00_04' selected>0 to 4</option>" + 
                 "<option value='05_09'>5 to 9</option>" +

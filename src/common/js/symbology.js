@@ -66,8 +66,8 @@ module.exports = function(geolayer, cMap, num) {
         breaks = [min * 0.5, min * 0.35, min * 0.2, min * 0.1, 0, max * 0.1, max * 0.2, max * 0.35, max * 0.5, max * 0.75];
     }
     if (num === "2") {
-        max = cMap.getMaxMigrationRate();
-        min = cMap.getMinMigrationRate();
+        max = cMap.getMaxMRTtl();
+        min = cMap.getMinMRTtl();
         breaks = [min * 0.5, min * 0.35, min * 0.2, min * 0.1, 0, max * 0.1, max * 0.2, max * 0.35, max * 0.5, max * 0.75];
         if (min > 0) {
             min = -max;
