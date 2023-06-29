@@ -31,7 +31,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             "<option value='2000'>2000s</option>" +
             "<option value='2010' selected>2010s</option>" +
             "</select><br />" +
-            "<br />Select Age Groups:<br /><select multiple size='19' id='agegroups'><option value='00_04' selected>0 to 4</option>" + 
+            "<br />Select Age Groups:<br /><select multiple size='15' id='agegroups'><option value='00_04' selected>0 to 4</option>" + 
                 "<option value='05_09'>5 to 9</option>" +
                 "<option value='10_14'>10 to 14</option>" +
                 "<option value='15_19'>15 to 19</option>" +
@@ -46,12 +46,12 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='60_64'>60 to 64</option>" +
                 "<option value='65_69'>65 to 69</option>" +
                 "<option value='70_74'>70 to 74</option>" +
-                //"<option value='75 to 79'>75 to 79</option>" +
-                //"<option value='80 to 84'>80 to 84</option>" +
-                //"<option value='85 to 89'>85 to 89</option>" +
-                //"<option value='90 to 94'>90 to 94</option>" +
-                //"<option value='95 and over'>95 and over</option>" +
-            "</select>";
+                "<option value='75_79'>75 to 79</option>" +
+            "</select><br />" +
+            "<p>Data for Older Age Groups Unavailable</p>"+
+            "<p>Source: Colorado State Demography Office and<br>"+
+            "Applied Population Laboratory,<br>"+ 
+            "University of Wisconsin - Madison</p>";
             //"<br /><button name='display' id='display' align='center'>Show Data</button>";
             
         div.padding = "20px";
@@ -180,5 +180,25 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
     
             require("./add_stat_caption.js")(map);
         }
+
+        $(document).ready(function(){
+            $("#selfrom").change(function(){
+          hideOption();
+            
+            })
+            /* $("#agegroups").change(function(){
+            hideOption();
+            }) */
+         })
+         function hideOption(){
+           var dec=$("#selfrom").val();
+            //var subject=$("#agegroups").val();
+            if(dec=="1970" || dec=="1980"){
+             $("#agegroups [value='75_79']").hide();
+            }
+            else{
+             $("#agegroups [value='75_79']").show();
+            }
+         }
     
 }
