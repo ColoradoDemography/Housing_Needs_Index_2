@@ -52,7 +52,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             "<p>Source: Colorado State Demography Office and<br>"+
             "Applied Population Laboratory,<br>"+ 
             "University of Wisconsin - Madison<br>"+
-            "<a href=https://storage.googleapis.com/co-publicdata/Colorado_Age_Mgration_By_Decade.xlsx>Download the data</a></p>";
+            "<a href=https://storage.googleapis.com/co-publicdata/Colorado_Age_Migration_By_Decade.csv>Download the data</a></p>";
             
             
         div.padding = "20px";

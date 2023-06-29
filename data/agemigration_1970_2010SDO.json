@@ -10516,7 +10516,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "00_04",
-    "population": 0,
+    "population": 2997,
     "migrationrate": 11.73,
     "netmigration": 410
   },
@@ -10525,7 +10525,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "05_09",
-    "population": 0,
+    "population": 3176,
     "migrationrate": 86.33,
     "netmigration": 2025
   },
@@ -10534,7 +10534,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "10_14",
-    "population": 0,
+    "population": 3272,
     "migrationrate": 35.98,
     "netmigration": 1068
   },
@@ -10543,7 +10543,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "15_19",
-    "population": 0,
+    "population": 2861,
     "migrationrate": 10.18,
     "netmigration": 329
   },
@@ -10552,7 +10552,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "20_24",
-    "population": 0,
+    "population": 1928,
     "migrationrate": -5.93,
     "netmigration": -194
   },
@@ -10561,7 +10561,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "25_29",
-    "population": 0,
+    "population": 2575,
     "migrationrate": 32.09,
     "netmigration": 885
   },
@@ -10570,7 +10570,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "30_34",
-    "population": 0,
+    "population": 3347,
     "migrationrate": 106.12,
     "netmigration": 2111
   },
@@ -10579,7 +10579,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "35_39",
-    "population": 0,
+    "population": 3777,
     "migrationrate": 69.57,
     "netmigration": 1826
   },
@@ -10588,7 +10588,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "40_44",
-    "population": 0,
+    "population": 3884,
     "migrationrate": 39.15,
     "netmigration": 1273
   },
@@ -10597,7 +10597,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "45_49",
-    "population": 0,
+    "population": 3118,
     "migrationrate": 15.99,
     "netmigration": 616
   },
@@ -10606,7 +10606,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "50_54",
-    "population": 0,
+    "population": 2557,
     "migrationrate": 9.58,
     "netmigration": 365
   },
@@ -10615,7 +10615,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "55_59",
-    "population": 0,
+    "population": 1502,
     "migrationrate": 13.52,
     "netmigration": 403
   },
@@ -10624,7 +10624,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "60_64",
-    "population": 0,
+    "population": 1034,
     "migrationrate": 15.44,
     "netmigration": 364
   },
@@ -10633,7 +10633,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "65_69",
-    "population": 0,
+    "population": 841,
     "migrationrate": 36.98,
     "netmigration": 495
   },
@@ -10642,7 +10642,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "70_74",
-    "population": 0,
+    "population": 729,
     "migrationrate": 50.79,
     "netmigration": 434
   },
@@ -10651,7 +10651,7 @@
     "countyfips": 14,
     "year": 2000,
     "age": "75_79",
-    "population": 0,
+    "population": 504,
     "migrationrate": 55.82,
     "netmigration": 362
   },
