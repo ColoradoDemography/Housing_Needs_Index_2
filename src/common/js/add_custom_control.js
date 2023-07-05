@@ -48,10 +48,9 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='70_74'>70 to 74</option>" +
                 "<option value='75_79'>75 to 79</option>" +
             "</select><br />" +
-            "<p>Data for Older Age Groups Unavailable</p>"+
+            "<p>Data for older age groups is unavailable. <br>Data for Broomfield before 2000 and <br>Arapahoe 1970s is unavailable.</p>"+
             "<p>Source: Colorado State Demography Office and<br>"+
-            "Applied Population Laboratory,<br>"+ 
-            "University of Wisconsin - Madison<br>"+
+            "Applied Population Lab, Univ. of Wisconsin - Madison<br>"+
             "<a href=https://storage.googleapis.com/co-publicdata/Colorado_Age_Migration_By_Decade.csv>Download the data</a></p>";
             
             

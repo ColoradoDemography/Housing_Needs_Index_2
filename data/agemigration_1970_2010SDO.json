@@ -19876,7 +19876,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "00_04",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19885,7 +19885,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "05_09",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19894,7 +19894,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "10_14",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19903,7 +19903,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "15_19",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19912,7 +19912,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "20_24",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19921,7 +19921,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "25_29",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19930,7 +19930,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "30_34",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19939,7 +19939,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "35_39",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19948,7 +19948,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "40_44",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19957,7 +19957,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "45_49",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19966,7 +19966,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "50_54",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19975,7 +19975,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "55_59",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19984,7 +19984,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "60_64",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -19993,7 +19993,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "65_69",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -20002,7 +20002,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "70_74",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -20011,7 +20011,7 @@
     "countyfips": 14,
     "year": 1990,
     "age": "75_79",
-    "population": 0,
+    "population": 1,
     "migrationrate": 0,
     "netmigration": 0
   },
@@ -45223,5 +45223,437 @@
     "population": 355,
     "migrationrate": 8.8,
     "netmigration": 31
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "00_04",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "05_09",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "10_14",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "15_19",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "20_24",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "25_29",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "30_34",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "35_39",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "40_44",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "45_49",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "50_54",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "55_59",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "60_64",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "65_69",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "70_74",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1980,
+    "age": "75_79",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "00_04",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "05_09",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "10_14",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "15_19",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "20_24",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "25_29",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "30_34",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "35_39",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "40_44",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "45_49",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "50_54",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "55_59",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "60_64",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "65_69",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "70_74",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Broomfield",
+    "countyfips": 14,
+    "year": 1970,
+    "age": "75_79",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+    {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "00_04",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "05_09",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "10_14",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "15_19",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "20_24",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "25_29",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "30_34",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "35_39",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "40_44",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "45_49",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "50_54",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "55_59",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "60_64",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "65_69",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "70_74",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
+  },
+  {
+    "county": "Arapahoe",
+    "countyfips": 5,
+    "year": 1970,
+    "age": "75_79",
+    "population": 1,
+    "migrationrate": 0,
+    "netmigration": 0
   }
 ]
