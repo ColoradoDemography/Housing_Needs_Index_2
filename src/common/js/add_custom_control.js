@@ -24,17 +24,17 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
         div.innerHTML = 
             //"Statistic:<br /><select id='stat'><option value='4'>Percent of Jobs</option><option value='3'>Total Jobs</option></select><br />" +
             "Select Variables:<br /><select multiple size='20' id='agegroups'>" +
-                "<option value='EPLOU75Burd' selected title='Cost Burdened Owner Households Making Less Than $75,000'>Cost Burdened Owners Under 75K</option>" + 
-                "<option value='EPLOU75XBurd' title='Extremely Cost Burdened Owner Households Making Less Than $75,000'>Extremely Cost Burdened Owners Under 75K</option>" +
-                "<option value='EPLRU75Burd' title='Cost Burdened Renter Households Making Less Than $75,000'>Cost Burdened Renters Under 75K</option>" +
-                "<option value='EPLRU75XBurd' title='Extremely Cost Burdened Renter Households Making Less Than $75,000'>Extremely Cost Burdened Renters Under 75K</option>" +
-                "<option value='COMMUTE' title='Median Commute Time'>Commute Time</option>" +
-                "<option value='JOBHU' title='New Jobs to New Housing Units, 2019-2023'>New Jobs-Housing Units Ratio</option>" +
-                "<option value='PROPTAXCAP' title='Property Tax Per Capita'>Property Tax Per Capita</option>" +
-                "<option value='MEDHHINC' title='Median Household Income'>Median Household Income</option>" +
-                "<option value='CROWD' title='Households With More People Than Rooms'>Crowded</option>" +
-                "<option value='BPPERCAP' title='Building Permits Per Capita'>Building Permits Per Capita</option>" +
-                "<option value='HHHU' title='Household to Housing Unit Ratio'>Households to Housing Units</option>" +
+                "<option value='EPLOU75Burd' selected title='Cost Burdened % of Owner Households Making Less Than $75,000'>Cost Burdened % of Owner Households Under 75K</option>" + 
+                "<option value='EPLOU75XBurd' title='Extremely Cost Burdened % of Owner Households Making Less Than $75,000'>Extremely Cost Burdened % of Owner Households Under 75K</option>" +
+                "<option value='EPLRU75Burd' title='Cost Burdened % of Renter Households Making Less Than $75,000'>Cost Burdened % of Renter Households Under 75K</option>" +
+                "<option value='EPLRU75XBurd' title='Extremely Cost Burdened % of Renter Households Making Less Than $75,000'>Extremely Cost Burdened Renter Households Under 75K</option>" +
+                "<option value='COMMUTE' title='Median Commute Time by County'>Commute Time (county average)</option>" +
+                "<option value='JOBHU' title='New Jobs to New Housing Units, 2019-2023 (the larger the number the fewer housing units built vs. new jobs)'>New Jobs to Housing Units Ratio</option>" +
+                "<option value='PROPTAXCAP' title='Inverse Property Tax Per Capita (The larger the number, the lower the property tax per capita'>Inverse Property Tax Per Capita</option>" +
+                "<option value='MEDHHINC' title='Inverse Median Household Income (The larger the number the lower the median household income'>Inverse Median Household Income</option>" +
+                "<option value='CROWD' title='Households With More People Than Rooms (The larger the number the more crowded households as a percent of total households'>Crowded</option>" +
+                "<option value='BPPERCAP' title='Inverse New Housing Units per Household Population (The higher the number the fewer new housing units per new household population'>Inverse New Housing Units per Household Population</option>" +
+                "<option value='HHHU' title='Total Household Population to Housing Units (The larger the number the fewer total households per total household population'>Total Household Population to Housing Units</option>" +
             "</select>";
             //"<br /><button name='display' id='display' align='center'>Show Data</button>";
             
