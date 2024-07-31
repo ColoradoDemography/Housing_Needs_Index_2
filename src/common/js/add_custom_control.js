@@ -23,7 +23,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
         var div = L.DomUtil.create('div', 'command bord');
         div.innerHTML = 
             //"Statistic:<br /><select id='stat'><option value='4'>Percent of Jobs</option><option value='3'>Total Jobs</option></select><br />" +
-            "Select Variables:<br /><select multiple size='20' id='agegroups'>" +
+            "Select Variables: Hover over each for more info<br /><select multiple size='20' id='agegroups'>" +
                 "<option value='EPLOU75Burd' selected title='Cost Burdened % of Owner Households Making Less Than $75,000'>Cost Burdened % of Owner Households Under 75K</option>" + 
                 "<option value='EPLOU75XBurd' title='Extremely Cost Burdened % of Owner Households Making Less Than $75,000'>Extremely Cost Burdened % of Owner Households Under 75K</option>" +
                 "<option value='EPLRU75Burd' title='Cost Burdened % of Renter Households Making Less Than $75,000'>Cost Burdened % of Renter Households Under 75K</option>" +
