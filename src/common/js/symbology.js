@@ -9,7 +9,7 @@ module.exports = function(geolayer, cMap, num) {
     var spreadh;
     var breaks = [];
 
-    if (num === "3") {
+    if (num === "1") {
         max = cMap.getMaxPctChange();
         min = cMap.getMinPctChange();
         breaks = [min * 0.5, min * 0.35, min * 0.2, min * 0.1, 0, max * 0.1, max * 0.2, max * 0.35, max * 0.5, max * 0.75];
@@ -25,7 +25,7 @@ module.exports = function(geolayer, cMap, num) {
             min = -max;
         }
     }
-    if (num === "1") {
+    if (num === "3") {
         max = cMap.getMaxTtl();
         min = cMap.getMinTtl();
         median = cMap.getMedianTotalPop();
@@ -112,8 +112,8 @@ module.exports = function(geolayer, cMap, num) {
         //if (num === "2") {
           //  value = cMap.retrieveTtlPopChg(fips);
         //}
-        if (num === "1") {
-            value = cMap.retrieveTtlPop(fips);
+        if (num === "3") {
+            value = cMap.retrieveCountyPop(fips);
         }
         if (num === "4") {
             value = cMap.retrievePctPop(fips);

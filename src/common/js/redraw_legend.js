@@ -23,7 +23,7 @@ module.exports = function(min, max, num, breaks) {
 
     var add_pct = "";
 
-    if (num === "3" || num === "4") {
+    if (num === "1" || num === "4") {
         add_pct = "%";
     }
 
@@ -114,7 +114,7 @@ module.exports = function(min, max, num, breaks) {
         htmlstring += "<tr><td colspan='4'>Percent of population<br/>of selected age groups<br/>for the year selected</td></tr></table>";
     }
     if (num === "3") {
-        htmlstring += "<tr><td colspan='4'>Total population<br/>of selected age groups<br/>for the year selected</td></tr></table>";
+        htmlstring += "<tr><td colspan='4'>Total index<br/>for selected variables</td></tr></table>";
     }
     if (num === "5") {
         htmlstring += "<tr><td colspan='4'>Births per 1,000 people</td></tr></table>";

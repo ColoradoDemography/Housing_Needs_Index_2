@@ -1,4 +1,4 @@
-module.exports = function(main_data, age_string, years_string, callback) {
+module.exports = function(main_data, age_string, callback) {
 
     //console.log(main_data);
     //create array from ages_string
@@ -6,20 +6,18 @@ module.exports = function(main_data, age_string, years_string, callback) {
     //console.log(ages_array);
     
     //create array from years_string
-    var years_array = years_string.split(",");
+    //var years_array = years_string.split(",");
     //console.log(years_array);
     
     var filtered_data = main_data.filter(function(d) {
 
         for (let i = 0; i < ages_array.length; i++) {
-            for (let j = 0; j < years_array.length; j++) {
-                //console.log(d.year);console.log(years_array[j]);
-                if ((d.age === ages_array[i]) && (d.year === parseInt(years_array[j]))) {
-                    console.log("True");
-                    return true;
-                }
+            
+            if (d.variable === ages_array[i]) {
+                return true;
             }
-        }
+        
+    }
         
         // for (let i = 0; i < ages_array.length; i++) {
         //     if (d.age === parseInt(ages_array[i])) {

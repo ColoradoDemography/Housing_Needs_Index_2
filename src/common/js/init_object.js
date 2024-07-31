@@ -76,18 +76,18 @@ module.exports = function() {
         }();
         this.number_of_years = number_of_years; */
         
-        var jsonData = getData(first_year);
+        //var jsonData = getData(first_year);
         
         /* POPULATION */
         // Net migration
-        this.retrieveCountyPop = function(fips, year) {
+        this.retrieveCountyPop = function(fips) {
             var agepop = 0;
             for (let i = 0; i < data.length; i++) {
-                    if (data[i].countyfips === fips && data[i].year === year) {
-                        agepop = agepop + parseInt(data[i].netmigration);
+                    if (data[i].FIPS === fips) {
+                        agepop = agepop + parseFloat(data[i].value);
                     }
                 }
-                //console.log("migrants = "+agepop);
+                console.log(agepop);
             return agepop; 
         }
 
@@ -123,7 +123,7 @@ module.exports = function() {
         this.getMaxTtl = function() {
             var max_value = -Infinity;
             for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveCountyPop(fips_array[i], first_year);
+                var current_county = this.retrieveCountyPop(fips_array[i]);
                 if (current_county > max_value) {
                     max_value = current_county;
                 }
@@ -134,7 +134,7 @@ module.exports = function() {
         this.getMinTtl = function() {
             var min_value = Infinity;
             for (let i = 0; i < fips_array.length; i++) {
-                var current_county = this.retrieveCountyPop(fips_array[i], first_year);
+                var current_county = this.retrieveCountyPop(fips_array[i]);
                 if (current_county < min_value) {
                     min_value = current_county;
                 }

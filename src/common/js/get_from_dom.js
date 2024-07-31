@@ -1,14 +1,14 @@
 module.exports = function() {
 
-    var first_year = "";
-    var last_year = "";
-    var stat_val = "";
+    //var first_year = "";
+    //var last_year = "";
+    var stat_val = "3";
     var age_string = "";
 
-    var stat_element = document.getElementById("stat");
+    //var stat_element = document.getElementById("stat");
     
     //chicken and the egg.  if this has been called before custom control was created
-    if (stat_element === null) {
+    /* if (stat_element === null) {
         first_year = "2010";
         last_year = "1000";
         stat_val = "3";
@@ -35,7 +35,7 @@ module.exports = function() {
     if (yearset === "") {
         yearset = String(first_year)
     }
-    
+     */
     var agecontrol = document.getElementById("agegroups");
     var collection = agecontrol.selectedOptions;
 
@@ -48,9 +48,9 @@ module.exports = function() {
     }
     
     if (age_string === "") {
-        age_string = "0 to 4";
+        age_string = "EPLOU75Burd";
     }
     //console.log(age_string, yearset, stat_val);
-    return [age_string, yearset, stat_val]
+    return [age_string, stat_val]
 
 }

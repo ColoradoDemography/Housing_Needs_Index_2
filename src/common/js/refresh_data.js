@@ -12,11 +12,11 @@ module.exports = function(geolayer, main_data) {
     //console.log(main_data);
     console.log(string_output);
 
-    filterData(main_data, string_output[0], string_output[1], function(data) {
+    filterData(main_data, string_output[0], function(data) {
         var cMap = new CMap(data);
 
         //symbolize layer
-        symbology(geolayer, cMap, string_output[2]);
+        symbology(geolayer, cMap, "3");
     });
 
 }

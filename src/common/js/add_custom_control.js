@@ -21,38 +21,22 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
 
     command.onAdd = function() {
         var div = L.DomUtil.create('div', 'command bord');
-        div.innerHTML = "Statistic:<br /><select id='stat'><option value='1'>Net Migrants</option><option value='2'>Migration Rate per 1,000</option></select><br />" +
-            "<br /><span>Decade:</span>&nbsp;&nbsp;<select id='selfrom'>" + //queriedYears + "</select>&nbsp;&nbsp;&nbsp;<to>To:</to>&nbsp;&nbsp;<select id='selto'>" + queriedYears + 
-            //"<option value='1950'>1950</option>" +
-            //"<option value='1960'>1960</option>" +
-            "<option value='1970'>1970s</option>" +
-            "<option value='1980'>1980s</option>" +
-            "<option value='1990'>1990s</option>" +
-            "<option value='2000'>2000s</option>" +
-            "<option value='2010' selected>2010s</option>" +
-            "</select><br />" +
-            "<br />Select Age Groups:<br /><select multiple size='15' id='agegroups'><option value='00_04' selected>0 to 4</option>" + 
-                "<option value='05_09'>5 to 9</option>" +
-                "<option value='10_14'>10 to 14</option>" +
-                "<option value='15_19'>15 to 19</option>" +
-                "<option value='20_24'>20 to 24</option>" +
-                "<option value='25_29'>25 to 29</option>" +
-                "<option value='30_34'>30 to 34</option>" +
-                "<option value='35_39'>35 to 39</option>" +
-                "<option value='40_44'>40 to 44</option>" +
-                "<option value='45_49'>45 to 49</option>" +
-                "<option value='50_54'>50 to 54</option>" +
-                "<option value='55_59'>55 to 59</option>" +
-                "<option value='60_64'>60 to 64</option>" +
-                "<option value='65_69'>65 to 69</option>" +
-                "<option value='70_74'>70 to 74</option>" +
-                "<option value='75_79'>75 to 79</option>" +
-            "</select><br />" +
-            "<p>Data for older age groups is unavailable. <br>Data for Broomfield before 2000 and <br>Arapahoe 1970s is unavailable.</p>"+
-            "<p>Source: Colorado State Demography Office and<br>"+
-            "Applied Population Lab, Univ. of Wisconsin - Madison<br>"+
-            "<a href=https://storage.googleapis.com/co-publicdata/Colorado_Age_Migration_By_Decade.csv>Download the data</a></p>";
-            
+        div.innerHTML = 
+            //"Statistic:<br /><select id='stat'><option value='4'>Percent of Jobs</option><option value='3'>Total Jobs</option></select><br />" +
+            "Select Variables:<br /><select multiple size='20' id='agegroups'>" +
+                "<option value='EPLOU75Burd' selected title='Cost Burdened Owner Households Making Less Than $75,000'>Cost Burdened Owners Under 75K</option>" + 
+                "<option value='EPLOU75XBurd' title='Extremely Cost Burdened Owner Households Making Less Than $75,000'>Extremely Cost Burdened Owners Under 75K</option>" +
+                "<option value='EPLRU75Burd' title='Cost Burdened Renter Households Making Less Than $75,000'>Cost Burdened Renters Under 75K</option>" +
+                "<option value='EPLRU75XBurd' title='Extremely Cost Burdened Renter Households Making Less Than $75,000'>Extremely Cost Burdened Renters Under 75K</option>" +
+                "<option value='COMMUTE' title='Median Commute Time'>Commute Time</option>" +
+                "<option value='JOBHU' title='New Jobs to New Housing Units, 2019-2023'>New Jobs-Housing Units Ratio</option>" +
+                "<option value='PROPTAXCAP' title='Property Tax Per Capita'>Property Tax Per Capita</option>" +
+                "<option value='MEDHHINC' title='Median Household Income'>Median Household Income</option>" +
+                "<option value='CROWD' title='Households With More People Than Rooms'>Crowded</option>" +
+                "<option value='BPPERCAP' title='Building Permits Per Capita'>Building Permits Per Capita</option>" +
+                "<option value='HHHU' title='Household to Housing Unit Ratio'>Households to Housing Units</option>" +
+            "</select>";
+            //"<br /><button name='display' id='display' align='center'>Show Data</button>";
             
         div.padding = "20px";
         return div;
@@ -60,10 +44,10 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
     command.addTo(map);
 
 
-    document.getElementById("stat").addEventListener("change", function() {
-        refreshdata(layer, main_data);
+    //document.getElementById("stat").addEventListener("change", function() {
+        //refreshdata(layer, main_data);
         //hide second year option if viewing single year
-        var stat_element = document.getElementById("stat");
+        //var stat_element = document.getElementById("stat");
         //console.log(stat_element.options[stat_element.selectedIndex].value);
         /* if (stat_element.options[stat_element.selectedIndex].value === '1') {
             $("span:first").text("Year:");
@@ -81,14 +65,14 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             $("#selto").show();
             //selto_element.style.display = "block";
         } */
-        console.log(main_data);
+        /* console.log(main_data);
     }, false);
 
     document.getElementById("selfrom").addEventListener("change", function() {
         refreshdata(layer, main_data);
         console.log(main_data);
         console.log("selfrom");
-    }, false);
+    }, false); */
 
     /* document.getElementById("selto").addEventListener("change", function() {
         refreshdata(layer, main_data);
@@ -174,8 +158,8 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
             
             refreshdata(layer, main_data);
         } else {
-            let e: any = document.querySelector('#selfrom [value="2010"]');
-            e.selected = true;
+            //let e: any = document.querySelector('#selfrom [value="2010"]');
+            //e.selected = true;
             refreshdata(layer, main_data);
     
             require("./add_stat_caption.js")(map);
