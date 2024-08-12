@@ -28,7 +28,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='EPLOU75XBurd' title='Extremely Cost Burdened % of Owner Households Making Less Than $75,000'>Extremely Cost Burdened % of Owner Households Under 75K</option>" +
                 "<option value='EPLRU75Burd' title='Cost Burdened % of Renter Households Making Less Than $75,000'>Cost Burdened % of Renter Households Under 75K</option>" +
                 "<option value='EPLRU75XBurd' title='Extremely Cost Burdened % of Renter Households Making Less Than $75,000'>Extremely Cost Burdened Renter Households Under 75K</option>" +
-                "<option value='ALLBURDEN' title='Total Percent of Households that are 30% or more Cost Burdened'>% of All Households that are Cost Burdened</option>" +
+                "<option value='ALLBURDEN' title='Percent of Households that are 30% or more Cost Burdened'>Cost Burdened % of All Households</option>" +
                 "<option value='COMMUTE' title='Median Commute Time by County'>Commute Time (county average)</option>" +
                 "<option value='JOBHU' title='New Jobs to New Housing Units, 2019-2023 (the larger the number the fewer housing units built vs. new jobs)'>New Jobs to Housing Units Ratio</option>" +
                 "<option value='PROPTAXCAP' title='Inverse Property Tax Per Capita (The larger the number, the lower the property tax per capita'>Inverse Property Tax Per Capita</option>" +
