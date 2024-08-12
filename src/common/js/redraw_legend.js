@@ -114,7 +114,7 @@ module.exports = function(min, max, num, breaks) {
         htmlstring += "<tr><td colspan='4'>Percent of population<br/>of selected age groups<br/>for the year selected</td></tr></table>";
     }
     if (num === "3") {
-        htmlstring += "<tr><td colspan='4'>Total index<br/>for selected variables.<br/>Higher numbers reflect more<br/>potential need</td></tr></table>";
+        htmlstring += "<tr><td colspan='4'>Number represents the sum of<br/>selected indicies.<br/>Each index is measured 0 to 1.<br/>Higher numbers reflect more<br/>potential need</td></tr></table>";
     }
     if (num === "5") {
         htmlstring += "<tr><td colspan='4'>Births per 1,000 people</td></tr></table>";
