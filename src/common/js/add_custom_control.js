@@ -39,7 +39,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='HHHU' title='Total Household Population to Housing Units (The larger the number the fewer total households per total household population'>Total Household Population to Housing Units</option>" +
                 "<option value='HHPOP' title='Population Living in Households'>Household Population</option>" +
                 "<option value='HHP2BP' title='Total Household Population to Building Permits Issued in the last 3 years'>Total Household Population to Building Permits Ratio</option>" +
-                "<option value='OHFS2HHPI' title='OHFS Gap Funding Dollars Divided by Household Population'>OHFS Gap Funding Per Person</option>" +
+                "<option value='OHFS2HHPI' title='Inverse OHFS Gap Funding Dollars Divided by Household Population (larger number has received less)'>Inverse OHFS Gap Funding Per Person</option>" +
             "</select>";
             //"<br /><button name='display' id='display' align='center'>Show Data</button>";
             
