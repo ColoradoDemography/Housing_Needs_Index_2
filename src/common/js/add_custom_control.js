@@ -29,6 +29,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='EPLRU75Burd' title='Cost Burdened % of Renter Households Making Less Than $75,000'>Cost Burdened % of Renter Households Under 75K</option>" +
                 "<option value='EPLRU75XBurd' title='Extremely Cost Burdened % of Renter Households Making Less Than $75,000'>Extremely Cost Burdened Renter Households Under 75K</option>" +
                 "<option value='ALLBURDEN' title='Percent of Households that are 30% or more Cost Burdened'>Cost Burdened % of All Households</option>" +
+                "<option value='TOTBURDI' title='Total Number of Households that are 30% or more Cost Burdened'>Total Cost Burdened Households</option>" +
                 "<option value='COMMUTE' title='Median Commute Time by County'>Commute Time (county average)</option>" +
                 "<option value='JOBHU' title='New Jobs to New Housing Units, 2019-2023 (the larger the number the fewer housing units built vs. new jobs)'>New Jobs to Housing Units Ratio</option>" +
                 "<option value='PROPTAXCAP' title='Inverse Property Tax Per Capita (The larger the number, the lower the property tax per capita'>Inverse Property Tax Per Capita</option>" +
@@ -38,7 +39,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='HHHU' title='Total Household Population to Housing Units (The larger the number the fewer total households per total household population'>Total Household Population to Housing Units</option>" +
                 "<option value='HHPOP' title='Population Living in Households'>Household Population</option>" +
                 "<option value='HHP2BP' title='Total Household Population to Building Permits Issued in the last 3 years'>Total Household Population to Building Permits Ratio</option>" +
-                
+                "<option value='OHFS2HHPI' title='OHFS Gap Funding Dollars Divided by Household Population'>OHFS Gap Funding Per Person</option>" +
             "</select>";
             //"<br /><button name='display' id='display' align='center'>Show Data</button>";
             
