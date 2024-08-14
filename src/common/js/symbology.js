@@ -152,88 +152,88 @@ module.exports = function(geolayer, cMap, num) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(49, 54, 149)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(255, 255, 255)"
             };
         }
         if ((value > breaks[0]) && (value <= breaks[1])) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(69, 117, 180)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(255,255,204)"
             };
         }
         if ((value > breaks[1]) && (value <= breaks[2])) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(116, 173, 209)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(255,237,160)"
             };
         }
         if ((value > breaks[2]) && (value <= breaks[3])) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(171, 217, 233)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(254,217,118)"
             };
         }
         if ((value > breaks[3]) && (value <= breaks[4])) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(224, 243, 248)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(254,178,76)"
             };
         }
         if ((value > breaks[4]) && (value <= breaks[5])) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(255, 255, 191)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(253,141,60)"
             };
         }
         if ((value > breaks[5]) && (value <= breaks[6])) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(254, 224, 144)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(252,78,42)"
             };
         }
         if ((value > breaks[6]) && (value <= breaks[7])) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(253, 174, 97)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(227,26,28)"
             };
         }
         if ((value > breaks[7]) && (value <= breaks[8])) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(244, 109, 67)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(189,0,38)"
             };
         }
         if ((value > breaks[8]) && (value <= breaks[9])) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(215, 48, 39)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(128,0,38)"
             };
         }
         if ((value > breaks[9]) && (value <= Infinity)) {
             return {
                 weight: 1,
                 color: "grey",
-                fillOpacity: 0.5,
-                fillColor: "rgb(165, 0, 38)"
+                fillOpacity: 0.75,
+                fillColor: "rgb(77,2,3)"
             };
         }
 
