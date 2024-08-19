@@ -27,7 +27,15 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='EPLOU75Burd' selected title='Cost Burdened % of Owner Households Making Less Than $75,000'>Cost Burdened % of Owner Households Under 75K</option>" + 
                 "<option value='EPLOU75XBurd' title='Extremely Cost Burdened % of Owner Households Making Less Than $75,000'>Extremely Cost Burdened % of Owner Households Under 75K</option>" +
                 "<option value='EPLRU75Burd' title='Cost Burdened % of Renter Households Making Less Than $75,000'>Cost Burdened % of Renter Households Under 75K</option>" +
-                "<option value='EPLRU75XBurd' title='Extremely Cost Burdened % of Renter Households Making Less Than $75,000'>Extremely Cost Burdened Renter Households Under 75K</option>" +
+                "<option value='EPLRU75XBurd' title='Extremely Cost Burdened % of Renter Households Making Less Than $75,000'>Extremely Cost Burdened % of Renter Households Under 75K</option>" +
+                "<option value='OWNBURDI' selected title='Cost Burdened Owner Households'>Cost Burdened Owner Households</option>" + 
+                "<option value='XOWNBURDI' title='Extremely Cost Burdened Owner Households'>Extremely Cost Burdened Owner Households</option>" +
+                "<option value='RNTBURDI' title='Cost Burdened Renter Households'>Cost Burdened Renter Households</option>" +
+                "<option value='XRNTBURDI' title='Extremely Cost Burdened Renter Households'>Extremely Cost Burdened Renter Households</option>" +
+                "<option value='OWNBURDPCTI' selected title='Cost Burdened % of Owner Households'>Cost Burdened % of Owner Households</option>" + 
+                "<option value='XOWNBURDPCTI' title='Extremely Cost Burdened % of Owner Households'>Extremely Cost Burdened % of Owner Households</option>" +
+                "<option value='RNTBURDPCTI' title='Cost Burdened % of Renter Households'>Cost Burdened % of Renter Households</option>" +
+                "<option value='XRNTBURDPCTI' title='Extremely Cost Burdened % of Renter Households'>Extremely Cost Burdened % of Renter Households</option>" +
                 "<option value='ALLBURDEN' title='Percent of Households that are 30% or more Cost Burdened'>Cost Burdened % of All Households</option>" +
                 "<option value='TOTBURDI' title='Total Number of Households that are 30% or more Cost Burdened'>Total Cost Burdened Households</option>" +
                 "<option value='COMMUTE' title='Median Commute Time by County'>Commute Time (county average)</option>" +
@@ -40,6 +48,7 @@ module.exports = function(map: Object, layer: Object, worker_data: any) {
                 "<option value='HHPOP' title='Population Living in Households'>Household Population</option>" +
                 "<option value='HHP2BP' title='Total Household Population to Building Permits Issued in the last 3 years'>Total Household Population to Building Permits Ratio</option>" +
                 "<option value='OHFS2HHPI' title='Inverse OHFS Gap Funding Dollars Divided by Household Population (larger number has received less)'>Inverse OHFS Gap Funding Per Person</option>" +
+               
             "</select>";
             //"<br /><button name='display' id='display' align='center'>Show Data</button>";
             
